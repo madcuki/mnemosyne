@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mnemosyne", "Mnemosyne\Mnemosyne.csproj", "{880D972A-3E28-4D5D-A272-9D6EC8260429}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mnemosyne", "Mnemosyne\Mnemosyne.csproj", "{880D972A-3E28-4D5D-A272-9D6EC8260429}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mnemosyne.UnitTests", "Mnemosyne.UnitTests\Mnemosyne.UnitTests.csproj", "{EF8FADCA-32C1-4659-B455-54D25587AC1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{880D972A-3E28-4D5D-A272-9D6EC8260429}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{880D972A-3E28-4D5D-A272-9D6EC8260429}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{880D972A-3E28-4D5D-A272-9D6EC8260429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF8FADCA-32C1-4659-B455-54D25587AC1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF8FADCA-32C1-4659-B455-54D25587AC1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF8FADCA-32C1-4659-B455-54D25587AC1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF8FADCA-32C1-4659-B455-54D25587AC1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,167 @@
+2021-03-25 16:59:14.356 -04:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.201\
+2021-03-25 16:59:14.604 -04:00 [INF] Registered 1 extensions:
+	Default extension
+2021-03-25 16:59:18.524 -04:00 [INF] Initializing upgrade step Select an entrypoint
+2021-03-25 16:59:54.366 -04:00 [INF] Applying upgrade step Select an entrypoint
+2021-03-25 17:00:07.496 -04:00 [INF] Upgrade step Select an entrypoint applied successfully
+2021-03-25 17:00:09.082 -04:00 [INF] Initializing upgrade step Select project to upgrade
+2021-03-25 17:00:09.125 -04:00 [INF] Initializing upgrade step Back up project
+2021-03-25 17:00:25.267 -04:00 [INF] Applying upgrade step Back up project
+2021-03-25 17:00:30.749 -04:00 [INF] Backing up C:\Users\Nathan\dev\mnemosyne\Mnemosyne to C:\Users\Nathan\dev\mnemosyne\Mnemosyne.backup
+2021-03-25 17:00:31.350 -04:00 [INF] Project backed up to C:\Users\Nathan\dev\mnemosyne\Mnemosyne.backup
+2021-03-25 17:00:31.352 -04:00 [INF] Upgrade step Back up project applied successfully
+2021-03-25 17:00:32.561 -04:00 [INF] Initializing upgrade step Convert project file to SDK style
+2021-03-25 17:00:44.083 -04:00 [INF] Applying upgrade step Convert project file to SDK style
+2021-03-25 17:00:44.085 -04:00 [INF] Converting project file format with try-convert, version 0.7.216201
+2021-03-25 17:00:45.226 -04:00 [INF] [try-convert] C:\Users\Nathan\dev\mnemosyne\Mnemosyne\Mnemosyne.csproj contains an App.config file. App.config is replaced by appsettings.json in .NET Core. You will need to delete App.config and migrate to appsettings.json if it's applicable to your project.
+2021-03-25 17:00:47.793 -04:00 [INF] [try-convert] Conversion complete!
+2021-03-25 17:00:48.302 -04:00 [INF] Project file converted successfully! The project may require additional changes to build successfully against the new .NET target.
+2021-03-25 17:00:50.979 -04:00 [INF] Upgrade step Convert project file to SDK style applied successfully
+2021-03-25 17:00:55.637 -04:00 [INF] Initializing upgrade step Clean up NuGet package references
+2021-03-25 17:00:57.619 -04:00 [INF] Reference to .NET Upgrade Assistant analyzer package (Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers, version 0.2.217201) needs added
+2021-03-25 17:00:57.626 -04:00 [INF] Packages to be addded:
+Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers, Version=0.2.217201
+2021-03-25 17:01:20.353 -04:00 [INF] Applying upgrade step Clean up NuGet package references
+2021-03-25 17:01:20.361 -04:00 [INF] Adding package reference: Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers, Version=0.2.217201
+2021-03-25 17:01:22.813 -04:00 [INF] Upgrade step Clean up NuGet package references applied successfully
+2021-03-25 17:01:29.408 -04:00 [INF] Initializing upgrade step Update TFM
+2021-03-25 17:01:29.416 -04:00 [INF] TFM needs updated to net5.0-windows
+2021-03-25 17:01:32.738 -04:00 [INF] Applying upgrade step Update TFM
+2021-03-25 17:01:37.172 -04:00 [INF] Updated TFM to net5.0-windows
+2021-03-25 17:01:37.173 -04:00 [INF] Upgrade step Update TFM applied successfully
+2021-03-25 17:01:37.234 -04:00 [INF] Initializing upgrade step Update NuGet Packages
+2021-03-25 17:01:38.996 -04:00 [INF] Adding Microsoft.Windows.Compatibility 5.0.2
+2021-03-25 17:01:38.999 -04:00 [INF] Packages to be addded:
+Microsoft.Windows.Compatibility, Version=5.0.2
+2021-03-25 17:01:41.804 -04:00 [INF] Applying upgrade step Update NuGet Packages
+2021-03-25 17:01:41.808 -04:00 [INF] Adding package reference: Microsoft.Windows.Compatibility, Version=5.0.2
+2021-03-25 17:01:50.676 -04:00 [INF] Marking package System.Data.DataSetExtensions for removal because it appears to be a transitive dependency
+2021-03-25 17:01:50.765 -04:00 [INF] Removing outdated package reference: System.Data.DataSetExtensions, Version=4.5.0
+2021-03-25 17:01:52.782 -04:00 [INF] Upgrade step Update NuGet Packages applied successfully
+2021-03-25 17:01:54.310 -04:00 [INF] Initializing upgrade step Add template files
+2021-03-25 17:01:54.352 -04:00 [INF] 0 expected template items needed
+2021-03-25 17:01:54.354 -04:00 [INF] Initializing upgrade step Upgrade app config files
+2021-03-25 17:01:54.376 -04:00 [INF] Found 0 app settings for upgrade: 
+2021-03-25 17:01:54.383 -04:00 [INF] 0 web page namespace imports need upgraded: 
+2021-03-25 17:01:54.391 -04:00 [INF] Initializing upgrade step Update C# source
+2021-03-25 17:01:56.117 -04:00 [INF] Initializing upgrade step Move to next project
+2021-03-25 17:02:05.263 -04:00 [INF] Applying upgrade step Move to next project
+2021-03-25 17:02:05.265 -04:00 [INF] Upgrade step Move to next project applied successfully
+2021-03-25 17:02:07.519 -04:00 [INF] Initializing upgrade step Select project to upgrade
+2021-03-25 17:02:07.533 -04:00 [INF] No projects need upgraded for entry point C:\Users\Nathan\dev\mnemosyne\Mnemosyne\Mnemosyne.csproj
+2021-03-25 17:02:07.536 -04:00 [INF] Initializing upgrade step Finalize upgrade
+2021-03-25 17:02:11.567 -04:00 [INF] Applying upgrade step Finalize upgrade
+2021-03-25 17:02:11.569 -04:00 [INF] Upgrade step Finalize upgrade applied successfully
+2021-03-25 17:02:12.636 -04:00 [INF] Upgrade has completed. Please review any changes.
+2021-03-25 17:02:12.639 -04:00 [INF] Saving upgrade progress file at C:\Users\Nathan\dev\mnemosyne\.upgrade-assistant
+2021-03-29 11:43:26.136 -04:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.201\
+2021-03-29 11:43:26.175 -04:00 [INF] Registered 1 extensions:
+	Default extension
+2021-03-29 11:43:29.528 -04:00 [INF] Loading upgrade progress file at C:\Users\Nathan\dev\mnemosyne\.upgrade-assistant
+2021-03-29 11:43:29.559 -04:00 [INF] Initializing upgrade step Select an entrypoint
+2021-03-29 11:43:47.880 -04:00 [INF] Applying upgrade step Select an entrypoint
+2021-03-29 11:43:54.257 -04:00 [INF] Upgrade step Select an entrypoint applied successfully
+2021-03-29 11:43:55.863 -04:00 [INF] Initializing upgrade step Select project to upgrade
+2021-03-29 11:44:29.436 -04:00 [INF] Saving upgrade progress file at C:\Users\Nathan\dev\mnemosyne\.upgrade-assistant
+2021-03-29 11:44:32.861 -04:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.201\
+2021-03-29 11:44:32.891 -04:00 [INF] Registered 1 extensions:
+	Default extension
+2021-03-29 11:44:34.830 -04:00 [INF] Loading upgrade progress file at C:\Users\Nathan\dev\mnemosyne\.upgrade-assistant
+2021-03-29 11:44:36.603 -04:00 [INF] Initializing upgrade step Select project to upgrade
+2021-03-29 11:44:38.474 -04:00 [INF] Applying upgrade step Select project to upgrade
+2021-03-29 11:44:55.918 -04:00 [INF] Upgrade step Select project to upgrade applied successfully
+2021-03-29 11:44:57.338 -04:00 [INF] Initializing upgrade step Back up project
+2021-03-29 11:45:00.311 -04:00 [INF] Applying upgrade step Back up project
+2021-03-29 11:45:03.436 -04:00 [INF] Backing up C:\Users\Nathan\dev\mnemosyne\Mnemosyne.UnitTests to C:\Users\Nathan\dev\mnemosyne\Mnemosyne.UnitTests.backup
+2021-03-29 11:45:03.758 -04:00 [INF] Project backed up to C:\Users\Nathan\dev\mnemosyne\Mnemosyne.UnitTests.backup
+2021-03-29 11:45:03.760 -04:00 [INF] Upgrade step Back up project applied successfully
+2021-03-29 11:45:04.745 -04:00 [INF] Initializing upgrade step Convert project file to SDK style
+2021-03-29 11:45:07.119 -04:00 [INF] Applying upgrade step Convert project file to SDK style
+2021-03-29 11:45:07.122 -04:00 [INF] Converting project file format with try-convert, version 0.7.216201
+2021-03-29 11:45:09.053 -04:00 [INF] [try-convert] Conversion complete!
+2021-03-29 11:45:09.405 -04:00 [INF] Project file converted successfully! The project may require additional changes to build successfully against the new .NET target.
+2021-03-29 11:45:13.154 -04:00 [INF] Upgrade step Convert project file to SDK style applied successfully
+2021-03-29 11:45:14.643 -04:00 [INF] Initializing upgrade step Clean up NuGet package references
+2021-03-29 11:45:16.412 -04:00 [FTL] Unexpected exception analyzing package references for: C:\Users\Nathan\dev\mnemosyne\Mnemosyne.UnitTests\Mnemosyne.UnitTests.csproj
+System.ArgumentException: '16.*' is not a valid version string. (Parameter 'value')
+   at NuGet.Versioning.NuGetVersion.Parse(String value)
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.NuGetExtensions.GetNuGetVersion(NuGetReference nugetRef) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/NuGetExtensions.cs:line 17
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageLoader.GetPackageArchiveAsync(NuGetReference packageReference, CancellationToken token, String cachePath) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageLoader.cs:line 214
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageLoader.DoesPackageSupportTargetFrameworkAsync(NuGetReference packageReference, String cachePath, TargetFrameworkMoniker targetFramework, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageLoader.cs:line 50
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.Analyzers.TargetCompatibilityReferenceAnalyzer.AnalyzeAsync(IProject project, PackageAnalysisState state, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/Analyzers/TargetCompatibilityReferenceAnalyzer.cs:line 39
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep.RunPackageAnalyzersAsync(IUpgradeContext context, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageUpdaterStep.cs:line 206
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep.InitializeImplAsync(IUpgradeContext context, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageUpdaterStep.cs:line 89
+2021-03-29 11:45:19.302 -04:00 [INF] Applying upgrade step Clean up NuGet package references
+2021-03-29 11:45:21.321 -04:00 [FTL] Unexpected exception analyzing package references for: C:\Users\Nathan\dev\mnemosyne\Mnemosyne.UnitTests\Mnemosyne.UnitTests.csproj
+System.ArgumentException: '16.*' is not a valid version string. (Parameter 'value')
+   at NuGet.Versioning.NuGetVersion.Parse(String value)
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.NuGetExtensions.GetNuGetVersion(NuGetReference nugetRef) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/NuGetExtensions.cs:line 17
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageLoader.GetPackageArchiveAsync(NuGetReference packageReference, CancellationToken token, String cachePath) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageLoader.cs:line 214
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageLoader.DoesPackageSupportTargetFrameworkAsync(NuGetReference packageReference, String cachePath, TargetFrameworkMoniker targetFramework, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageLoader.cs:line 50
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.Analyzers.TargetCompatibilityReferenceAnalyzer.AnalyzeAsync(IProject project, PackageAnalysisState state, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/Analyzers/TargetCompatibilityReferenceAnalyzer.cs:line 39
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep.RunPackageAnalyzersAsync(IUpgradeContext context, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageUpdaterStep.cs:line 206
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep.ApplyImplAsync(IUpgradeContext context, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageUpdaterStep.cs:line 172
+2021-03-29 11:45:21.325 -04:00 [WRN] Upgrade step Clean up NuGet package references failed: "Failed": Unexpected exception analyzing package references for: C:\Users\Nathan\dev\mnemosyne\Mnemosyne.UnitTests\Mnemosyne.UnitTests.csproj
+2021-03-29 11:45:22.837 -04:00 [INF] Applying upgrade step Clean up NuGet package references
+2021-03-29 11:45:24.830 -04:00 [FTL] Unexpected exception analyzing package references for: C:\Users\Nathan\dev\mnemosyne\Mnemosyne.UnitTests\Mnemosyne.UnitTests.csproj
+System.ArgumentException: '16.*' is not a valid version string. (Parameter 'value')
+   at NuGet.Versioning.NuGetVersion.Parse(String value)
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.NuGetExtensions.GetNuGetVersion(NuGetReference nugetRef) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/NuGetExtensions.cs:line 17
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageLoader.GetPackageArchiveAsync(NuGetReference packageReference, CancellationToken token, String cachePath) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageLoader.cs:line 214
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageLoader.DoesPackageSupportTargetFrameworkAsync(NuGetReference packageReference, String cachePath, TargetFrameworkMoniker targetFramework, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageLoader.cs:line 50
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.Analyzers.TargetCompatibilityReferenceAnalyzer.AnalyzeAsync(IProject project, PackageAnalysisState state, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/Analyzers/TargetCompatibilityReferenceAnalyzer.cs:line 39
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep.RunPackageAnalyzersAsync(IUpgradeContext context, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageUpdaterStep.cs:line 206
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep.ApplyImplAsync(IUpgradeContext context, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageUpdaterStep.cs:line 172
+2021-03-29 11:45:24.834 -04:00 [WRN] Upgrade step Clean up NuGet package references failed: "Failed": Unexpected exception analyzing package references for: C:\Users\Nathan\dev\mnemosyne\Mnemosyne.UnitTests\Mnemosyne.UnitTests.csproj
+2021-03-29 11:45:40.100 -04:00 [INF] Skipping upgrade step Clean up NuGet package references
+2021-03-29 11:45:40.101 -04:00 [INF] Upgrade step Clean up NuGet package references skipped
+2021-03-29 11:45:41.216 -04:00 [INF] Initializing upgrade step Update TFM
+2021-03-29 11:45:41.231 -04:00 [INF] TFM needs updated to net5.0-windows
+2021-03-29 11:45:46.401 -04:00 [INF] Applying upgrade step Update TFM
+2021-03-29 11:46:02.421 -04:00 [INF] Updated TFM to net5.0-windows
+2021-03-29 11:46:02.423 -04:00 [INF] Upgrade step Update TFM applied successfully
+2021-03-29 11:46:03.241 -04:00 [INF] Initializing upgrade step Update NuGet Packages
+2021-03-29 11:46:04.860 -04:00 [FTL] Unexpected exception analyzing package references for: C:\Users\Nathan\dev\mnemosyne\Mnemosyne.UnitTests\Mnemosyne.UnitTests.csproj
+System.ArgumentException: '16.*' is not a valid version string. (Parameter 'value')
+   at NuGet.Versioning.NuGetVersion.Parse(String value)
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.NuGetExtensions.GetNuGetVersion(NuGetReference nugetRef) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/NuGetExtensions.cs:line 17
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageLoader.GetPackageArchiveAsync(NuGetReference packageReference, CancellationToken token, String cachePath) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageLoader.cs:line 214
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageLoader.DoesPackageSupportTargetFrameworkAsync(NuGetReference packageReference, String cachePath, TargetFrameworkMoniker targetFramework, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageLoader.cs:line 50
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.Analyzers.TargetCompatibilityReferenceAnalyzer.AnalyzeAsync(IProject project, PackageAnalysisState state, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/Analyzers/TargetCompatibilityReferenceAnalyzer.cs:line 39
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep.RunPackageAnalyzersAsync(IUpgradeContext context, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageUpdaterStep.cs:line 206
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep.InitializeImplAsync(IUpgradeContext context, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageUpdaterStep.cs:line 89
+2021-03-29 11:46:06.652 -04:00 [INF] Applying upgrade step Update NuGet Packages
+2021-03-29 11:46:08.627 -04:00 [FTL] Unexpected exception analyzing package references for: C:\Users\Nathan\dev\mnemosyne\Mnemosyne.UnitTests\Mnemosyne.UnitTests.csproj
+System.ArgumentException: '16.*' is not a valid version string. (Parameter 'value')
+   at NuGet.Versioning.NuGetVersion.Parse(String value)
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.NuGetExtensions.GetNuGetVersion(NuGetReference nugetRef) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/NuGetExtensions.cs:line 17
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageLoader.GetPackageArchiveAsync(NuGetReference packageReference, CancellationToken token, String cachePath) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageLoader.cs:line 214
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageLoader.DoesPackageSupportTargetFrameworkAsync(NuGetReference packageReference, String cachePath, TargetFrameworkMoniker targetFramework, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageLoader.cs:line 50
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.Analyzers.TargetCompatibilityReferenceAnalyzer.AnalyzeAsync(IProject project, PackageAnalysisState state, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/Analyzers/TargetCompatibilityReferenceAnalyzer.cs:line 39
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep.RunPackageAnalyzersAsync(IUpgradeContext context, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageUpdaterStep.cs:line 206
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep.ApplyImplAsync(IUpgradeContext context, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageUpdaterStep.cs:line 172
+2021-03-29 11:46:08.632 -04:00 [WRN] Upgrade step Update NuGet Packages failed: "Failed": Unexpected exception analyzing package references for: C:\Users\Nathan\dev\mnemosyne\Mnemosyne.UnitTests\Mnemosyne.UnitTests.csproj
+2021-03-29 11:46:10.280 -04:00 [INF] Skipping upgrade step Update NuGet Packages
+2021-03-29 11:46:10.281 -04:00 [INF] Upgrade step Update NuGet Packages skipped
+2021-03-29 11:46:11.274 -04:00 [INF] Initializing upgrade step Add template files
+2021-03-29 11:46:11.320 -04:00 [INF] 0 expected template items needed
+2021-03-29 11:46:11.321 -04:00 [INF] Initializing upgrade step Update C# source
+2021-03-29 11:46:13.669 -04:00 [INF] Initializing upgrade step Move to next project
+2021-03-29 11:46:29.957 -04:00 [INF] Saving upgrade progress file at C:\Users\Nathan\dev\mnemosyne\.upgrade-assistant
+2021-03-29 11:48:06.252 -04:00 [INF] MSBuild registered from C:\Program Files\dotnet\sdk\5.0.201\
+2021-03-29 11:48:06.282 -04:00 [INF] Registered 1 extensions:
+	Default extension
+2021-03-29 11:48:08.359 -04:00 [INF] Loading upgrade progress file at C:\Users\Nathan\dev\mnemosyne\.upgrade-assistant
+2021-03-29 11:48:10.589 -04:00 [INF] Initializing upgrade step Back up project
+2021-03-29 11:48:10.592 -04:00 [INF] Initializing upgrade step Convert project file to SDK style
+2021-03-29 11:48:10.594 -04:00 [INF] Initializing upgrade step Clean up NuGet package references
+2021-03-29 11:48:12.384 -04:00 [FTL] Unexpected exception analyzing package references for: C:\Users\Nathan\dev\mnemosyne\Mnemosyne.UnitTests\Mnemosyne.UnitTests.csproj
+System.ArgumentException: '16.*' is not a valid version string. (Parameter 'value')
+   at NuGet.Versioning.NuGetVersion.Parse(String value)
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.NuGetExtensions.GetNuGetVersion(NuGetReference nugetRef) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/NuGetExtensions.cs:line 17
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageLoader.GetPackageArchiveAsync(NuGetReference packageReference, CancellationToken token, String cachePath) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageLoader.cs:line 214
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageLoader.DoesPackageSupportTargetFrameworkAsync(NuGetReference packageReference, String cachePath, TargetFrameworkMoniker targetFramework, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageLoader.cs:line 50
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.Analyzers.TargetCompatibilityReferenceAnalyzer.AnalyzeAsync(IProject project, PackageAnalysisState state, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/Analyzers/TargetCompatibilityReferenceAnalyzer.cs:line 39
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep.RunPackageAnalyzersAsync(IUpgradeContext context, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageUpdaterStep.cs:line 206
+   at Microsoft.DotNet.UpgradeAssistant.Steps.Packages.PackageUpdaterStep.InitializeImplAsync(IUpgradeContext context, CancellationToken token) in /_/src/steps/Microsoft.DotNet.UpgradeAssistant.Steps.Packages/PackageUpdaterStep.cs:line 89
+2021-03-29 12:09:12.481 -04:00 [INF] Saving upgrade progress file at C:\Users\Nathan\dev\mnemosyne\.upgrade-assistant
