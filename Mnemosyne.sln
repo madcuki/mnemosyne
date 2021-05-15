@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mnemosyne", "Mnemosyne\Mnemosyne.csproj", "{880D972A-3E28-4D5D-A272-9D6EC8260429}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mnemosyne.UnitTests", "Mnemosyne.UnitTests\Mnemosyne.UnitTests.csproj", "{EF8FADCA-32C1-4659-B455-54D25587AC1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mnemosyne.UnitTests", "Mnemosyne.UnitTests\Mnemosyne.UnitTests.csproj", "{EF8FADCA-32C1-4659-B455-54D25587AC1C}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MnemInstaller", "MnemInstaller\MnemInstaller.vdproj", "{A7BE7BAD-7E44-461E-9775-19F81234432E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,7 +22,10 @@ Global
 		{EF8FADCA-32C1-4659-B455-54D25587AC1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EF8FADCA-32C1-4659-B455-54D25587AC1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF8FADCA-32C1-4659-B455-54D25587AC1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF8FADCA-32C1-4659-B455-54D25587AC1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7BE7BAD-7E44-461E-9775-19F81234432E}.Debug|Any CPU.ActiveCfg = Debug
+		{A7BE7BAD-7E44-461E-9775-19F81234432E}.Debug|Any CPU.Build.0 = Debug
+		{A7BE7BAD-7E44-461E-9775-19F81234432E}.Release|Any CPU.ActiveCfg = Release
+		{A7BE7BAD-7E44-461E-9775-19F81234432E}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
