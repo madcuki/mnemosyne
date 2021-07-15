@@ -29,7 +29,6 @@
   <ItemGroup>
     <Compile Include="Components.wxs" />
     <Compile Include="Directories.wxs" />
-    <Compile Include="HeatComponents.wxs" />
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>

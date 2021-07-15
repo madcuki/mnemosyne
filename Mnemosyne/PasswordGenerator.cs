@@ -65,15 +65,6 @@ namespace Mnemosyne
 
         public PasswordGenerator()
         {
-            SpecialCharacters = new char[AllSpecialCharacters.Length];
-            AllSpecialCharacters.CopyTo(SpecialCharacters, 0);
-
-            MakePronounceable       = false;
-            UseUppercase            = false;
-            UseLowercase            = false;
-            UseDigits               = false;
-            UseSpecialCharacters    = false;
-
             _all_digit_vowel_subs = new Dictionary<char, char>()
             {
                 { 'a', '4' },
@@ -103,6 +94,14 @@ namespace Mnemosyne
                 { 't', '+' },
                 { 'v', '^' },
             };
+
+            SpecialCharacters = AllSpecialCharacters;
+
+            MakePronounceable = false;
+            UseUppercase = false;
+            UseLowercase = false;
+            UseDigits = false;
+            UseSpecialCharacters = false;
 
             _letters    = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
             _vowels     = "AEIOU".ToCharArray();
