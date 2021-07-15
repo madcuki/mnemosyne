@@ -13,56 +13,68 @@ namespace Mnemosyne
 {
     public class MnemRandom : Random
     {
-        private RNGCryptoServiceProvider _rng =
-            new RNGCryptoServiceProvider();
-        private byte[] _uint32Buffer = new byte[4];
+        private RNGCryptoServiceProvider _rng;
+        private byte[] _uint32_buffer;
 
-        public MnemRandom() { }
-        public MnemRandom(Int32 ignoredSeed) { }
-
-        public override Int32 Next()
+        public MnemRandom()
         {
-            _rng.GetBytes(_uint32Buffer);
-            return BitConverter.ToInt32(_uint32Buffer, 0) & 0x7FFFFFFF;
+            _rng = new RNGCryptoServiceProvider();
+            _uint32_buffer = new byte[4];
         }
 
-        public override Int32 Next(Int32 maxValue)
+        public override int Next()
         {
-            if (maxValue < 0)
-                throw new ArgumentOutOfRangeException("maxValue");
-            return Next(0, maxValue);
+            _rng.GetBytes(_uint32_buffer);
+            return BitConverter.ToInt32(_uint32_buffer, 0) & 0x7FFFFFFF;
         }
 
-        public override Int32 Next(Int32 minValue, Int32 maxValue)
+        public override int Next(int max_value)
         {
-            if (minValue > maxValue)
-                throw new ArgumentOutOfRangeException("minValue");
-            if (minValue == maxValue) return minValue;
-            Int64 diff = maxValue - minValue;
+            if (max_value < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(max_value));
+            }
+            return Next(0, max_value);
+        }
+
+        public override int Next(int min_value, int max_value)
+        {
+            if (min_value > max_value)
+            {
+                throw new ArgumentOutOfRangeException(nameof(min_value));
+            }
+            if (min_value == max_value)
+            {
+                return min_value;
+            }
+            long diff = max_value - min_value;
             while (true)
             {
-                _rng.GetBytes(_uint32Buffer);
-                UInt32 rand = BitConverter.ToUInt32(_uint32Buffer, 0);
+                _rng.GetBytes(_uint32_buffer);
+                uint rand = BitConverter.ToUInt32(_uint32_buffer, 0);
 
-                Int64 max = (1 + (Int64)UInt32.MaxValue);
-                Int64 remainder = max % diff;
+                long max = 1 + (long)uint.MaxValue;
+                long remainder = max % diff;
                 if (rand < max - remainder)
                 {
-                    return (Int32)(minValue + (rand % diff));
+                    return (int)(min_value + (rand % diff));
                 }
             }
         }
 
         public override double NextDouble()
         {
-            _rng.GetBytes(_uint32Buffer);
-            UInt32 rand = BitConverter.ToUInt32(_uint32Buffer, 0);
-            return rand / (1.0 + UInt32.MaxValue);
+            _rng.GetBytes(_uint32_buffer);
+            uint rand = BitConverter.ToUInt32(_uint32_buffer, 0);
+            return rand / (1.0 + uint.MaxValue);
         }
 
         public override void NextBytes(byte[] buffer)
         {
-            if (buffer == null) throw new ArgumentNullException("buffer");
+            if (buffer == null)
+            {
+                throw new ArgumentNullException(nameof(buffer));
+            }
             _rng.GetBytes(buffer);
         }
 

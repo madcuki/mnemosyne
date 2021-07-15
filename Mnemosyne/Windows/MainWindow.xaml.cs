@@ -1,134 +1,176 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Mnemosyne
 {
     public partial class MainWindow : Window
     {
-        CipherFile file;
+        private CipherFile _file;
 
-        public List<CredentialItem> CredentialItems
+        private bool _uncheck_all_items;
+
+        private static DependencyProperty _InitialMinWidthProperty = DependencyProperty.Register("_InitialWidth", typeof(double), typeof(MainWindow));
+        private static DependencyProperty _InitialMinHeightProperty = DependencyProperty.Register("_InitialHeight", typeof(double), typeof(MainWindow));
+
+        private double _InitialWidth
         {
-            get
-            {
-                return credentialItems;
-            }
             set
             {
-                credentialItems = value;
+                SetValue(_InitialMinWidthProperty, value);
+            }
+        }
+        private double _InitialHeight
+        {
+            set
+            {
+                SetValue(_InitialMinHeightProperty, value);
             }
         }
 
-        private List<CredentialItem> credentialItems;
-        
         public MainWindow(CipherFile file)
         {
             InitializeComponent();
 
-            this.file = file;
+            _file = file;
+            _uncheck_all_items = true;
 
-            loadListView();
-            initializeControls();
-            selectAll(true);
-            selectAll(false);
+            _ReloadListView();
+            _SelectAll(true);
+            _SelectAll(false);
+
+            ((INotifyCollectionChanged)_lvw_Credentials.Items).CollectionChanged += new NotifyCollectionChangedEventHandler(_CredentialItems_CollectionChanged);
         }
 
-        private void loadListView()
+        private void _ReloadListView()
         {
-            vw_credentials.Items.Clear();
-            foreach (Credential credential in file.Credentials)
+            _lvw_Credentials.Items.Clear();
+            foreach (Credential credential in _file.Data.Credentials)
             {
-                vw_credentials.Items.Add(new CredentialItem(credential));
+                _lvw_Credentials.Items.Add(new CredentialItem(credential));
             }
+
+            _UpdateControls();
         }
 
-        private void initializeControls()
+        private void _UpdateControls()
         {
-            bool one = vw_credentials.SelectedItems.Count == 1,
-                many = vw_credentials.SelectedItems.Count > 1;
+            bool one = _lvw_Credentials.SelectedItems.Count == 1,
+                many = _lvw_Credentials.SelectedItems.Count > 1;
 
-            btn_edit.IsEnabled = one;
-            btn_delete.IsEnabled = one || many;
-            btn_show.IsEnabled = one || many;
-            btn_hide.IsEnabled = one || many;
+            _btn_Edit.IsEnabled      = one;
+            _btn_Delete.IsEnabled    = one || many;
+            _btn_Show.IsEnabled      = one || many;
+            _btn_Hide.IsEnabled      = one || many;
         }
 
-        private void showHidePasswords(bool show)
+        private void _ShowSelectedPasswords(bool show)
         {
-            foreach (CredentialItem item in vw_credentials.SelectedItems)
+            foreach (CredentialItem item in _lvw_Credentials.SelectedItems)
             {
                 item.ShowPassword = show;
             }
         }
 
-        private void selectAll(bool select = true)
+        private void _SelectAll(bool select = true)
         {
-            foreach (CredentialItem item in vw_credentials.Items)
+            foreach (CredentialItem item in _lvw_Credentials.Items)
             {
                 if (select)
                 {
-                    vw_credentials.SelectedItems.Add(item);
+                    _lvw_Credentials.SelectedItems.Add(item);
                 }
                 else
                 {
-                    vw_credentials.SelectedItems.Remove(item);
+                    _lvw_Credentials.SelectedItems.Remove(item);
                 }
             }
         }
 
-        private void openCredentialWindow(Credential credential = null)
+        private void _OpenCredentialWindow(Credential credential = null)
         {
-            if ((bool)new CredentialWindow(file, credential).ShowDialog())
+            if ((bool)new CredentialWindow(_file, credential).ShowDialog())
             {
-                loadListView();
+                _ReloadListView();
             }
         }
 
-        private void btn_newClick(object sender, RoutedEventArgs e)
+        private void _win_Main_Loaded(object sender, RoutedEventArgs e)
         {
-            openCredentialWindow();
+            _InitialWidth = ActualWidth;
+            _InitialHeight = ActualHeight;
         }
 
-        private void btn_editClick(object sender, RoutedEventArgs e)
+        private void _btn_New_Click(object sender, RoutedEventArgs e)
         {
-            openCredentialWindow(((CredentialItem)vw_credentials.SelectedItems[0]).Credential);
+            _OpenCredentialWindow();
         }
 
-        private void btn_deleteClick(object sender, RoutedEventArgs e)
+        private void _btn_Edit_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in vw_credentials.SelectedItems)
+            _OpenCredentialWindow(((CredentialItem)_lvw_Credentials.SelectedItem).Credential);
+        }
+
+        private void _btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in _lvw_Credentials.SelectedItems)
             {
-                file.Credentials.Remove((item as CredentialItem).Credential);
+                _file.Data.Credentials.Remove((item as CredentialItem).Credential);
             }
-            vw_credentials.SelectedItems.Clear();
-            file.Save();
-            loadListView();
+            _lvw_Credentials.SelectedItems.Clear();
+            _file.Save();
+            _ReloadListView();
         }
 
-        private void btn_showClick(object sender, RoutedEventArgs e)
+        private void _btn_Show_Click(object sender, RoutedEventArgs e)
         {
-            showHidePasswords(true);
+            _ShowSelectedPasswords(true);
         }
 
-        private void btn_hideClick(object sender, RoutedEventArgs e)
+        private void _btn_Hide_Click(object sender, RoutedEventArgs e)
         {
-            showHidePasswords(false);
+            _ShowSelectedPasswords(false);
         }
 
-        private void chk_allChecked(object sender, RoutedEventArgs e)
+        private void _btn_Rekey_Click(object sender, RoutedEventArgs e)
         {
-            selectAll(true);
+            if ((bool)new CipherWindow(_file).ShowDialog())
+            {
+                Close();
+            }
         }
 
-        private void chk_allUnchecked(object sender, RoutedEventArgs e)
+        private void _chk_All_Checked(object sender, RoutedEventArgs e)
         {
-            selectAll(false);
+            _SelectAll(true);
         }
 
-        private void vw_selectedCredentialsChanged(object sender, SelectionChangedEventArgs e)
+        private void _chk_All_Unchecked(object sender, RoutedEventArgs e)
         {
-            initializeControls();
+            if (_uncheck_all_items)
+            {
+                _SelectAll(false);
+            }
+        }
+
+        private void _lvw_Credentials_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _UpdateControls();
+
+            _uncheck_all_items = false;
+            _chk_All.IsChecked = _lvw_Credentials.SelectedItems.Count == _lvw_Credentials.Items.Count;
+            _uncheck_all_items = true;
+        }
+
+        private void _CredentialItems_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            _chk_All.IsChecked = false;
+        }
+
+        private void _lvi_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            _OpenCredentialWindow(((CredentialItem)_lvw_Credentials.SelectedItem).Credential);
         }
     }
 }

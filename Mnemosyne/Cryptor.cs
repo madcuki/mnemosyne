@@ -2,7 +2,7 @@
 
 namespace Mnemosyne
 {
-    class AesGcmEncryptor
+    class Cryptor
     {
         public (byte[], byte[]) Encrypt(byte[] plaintext, byte[] key, byte[] nonce, byte[] data)
         {

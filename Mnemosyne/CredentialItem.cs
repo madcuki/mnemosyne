@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace Mnemosyne
 {
@@ -17,11 +12,11 @@ namespace Mnemosyne
         {
             get
             {
-                return credential;
+                return _credential;
             }
             set
             {
-                credential = value;
+                _credential = value;
             }
         }
         public string Password {
@@ -29,7 +24,7 @@ namespace Mnemosyne
             {
                 if (ShowPassword)
                 {
-                    return credential.Password;
+                    return _credential.Password;
                 }
                 else
                 {
@@ -38,37 +33,37 @@ namespace Mnemosyne
             }
             set
             {
-                if (credential.Password == value)
+                if (_credential.Password == value)
                 {
                     return;
                 }
-                credential.Password = value;
+                _credential.Password = value;
                 RaisePropertyChanged("Password");
             }
         }
         public bool ShowPassword {
             get
             {
-                return showPassword;
+                return _show_password;
             }
             set
             {
-                if (showPassword == value)
+                if (_show_password == value)
                 {
                     return;
                 }
-                showPassword = value;
+                _show_password = value;
                 RaisePropertyChanged("ShowPassword");
                 RaisePropertyChanged("Password");
             }
         }
 
-        private Credential credential;
-        private bool showPassword;
+        private Credential _credential;
+        private bool _show_password;
 
         public CredentialItem(Credential credential = null)
         {
-            Credential = (credential == null ? new Credential() : credential);
+            Credential = credential == null ? new Credential() : credential;
         }
 
         private void RaisePropertyChanged(string propName)

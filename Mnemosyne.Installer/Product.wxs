@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <?if $(var.Platform)=x64?>
+		<?define ProductCode = "{F3AEF565-7FFA-453B-ADBA-CD8356B0B478}"?>
+  <?else?>
+		<?define ProductCode = "{9672B93F-F926-4553-8C05-DC75CA4EA1FA}"?>
+  <?endif?>
+
+  <?define UpgradeCode = "{831AE228-F750-4889-AEDE-EF24CE47FFC5}"?>
+
+  <Product
+    Id="$(var.ProductCode)"
+    Name="!(loc.ProductName_$(var.Platform))"
+    Language="!(loc.Language)"
+    Version="$(var.BuildVersion)"
+    Manufacturer="!(loc.CompanyName)"
+    UpgradeCode="$(var.UpgradeCode)">
+    
+    <Package
+      InstallerVersion="200"
+      Compressed="yes"
+      InstallScope="perMachine"
+    />
+
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeErrorMessage)" />
+    <MediaTemplate EmbedCab="yes" />
+    <UIRef Id="WixUI_Minimal" />
+    
+    <Feature Id="ProductFeature" Title="!(loc.ProductName)" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="HeatComponents" />
+    </Feature>
+    
+  </Product>
+</Wix>

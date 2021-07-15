@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+
+  <String Id="Language">1033</String>
+  
+	<String Id="CompanyName">Mnemosyne</String>
+	
+  <String Id="ProductFolderName">Mnemosyne</String>
+  <String Id="ProductName">Mnemosyne</String>
+  <String Id="ProductName_x86">Mnemosyne (x86)</String>
+	<String Id="ProductName_x64">Mnemosyne (x64)</String>
+  
+	<String Id="DowngradeErrorMessage">A newer version of Mnemosyne is already installed.</String>
+  
+</WixLocalization>

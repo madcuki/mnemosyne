@@ -7,33 +7,15 @@ namespace Mnemosyne
     /// </summary>
     public partial class CredentialWindow : Window
     {
-        public Credential Credential
-        {
-            get
-            {
-                return credential;
-            }
-            set
-            {
-                credential = value;
-            }
-        }
         public Credential Draft
         {
-            get
-            {
-                return draft;
-            }
-            set
-            {
-                draft = value;
-            }
+            get;
+            set;
         }
 
-        private Credential credential;
-        private Credential draft;
-        private CipherFile file;
-        private bool isNew;
+        private Credential _credential;
+        private CipherFile _file;
+        private bool _new;
 
         public CredentialWindow(CipherFile file, Credential credential = null)
         {
@@ -41,40 +23,40 @@ namespace Mnemosyne
 
             DataContext = this;
 
-            this.file = file;
-            isNew = credential == null;
+            _file = file;
+            _new = credential == null;
             
-            Credential = isNew ? new Credential() : credential;
+            _credential = _new ? new Credential() : credential;
             Draft = new Credential()
             { 
-                Name = Credential.Name,
-                Email = Credential.Email,
-                Username = Credential.Username,
-                Password = Credential.Password
+                Name = _credential.Name,
+                Email = _credential.Email,
+                Username = _credential.Username,
+                Password = _credential.Password
             };
         }
 
-        private void btn_generator_Click(object sender, RoutedEventArgs e)
+        private void _btn_Generator_Click(object sender, RoutedEventArgs e)
         {
-            PasswordGeneratorWindow window = new PasswordGeneratorWindow(Credential.Password);
-            if ((bool)window.ShowDialog())
+            PasswordGeneratorWindow generator = new PasswordGeneratorWindow(_credential.Password);
+            if ((bool)generator.ShowDialog())
             {
-                Draft.Password = window.Password;
+                Draft.Password = generator.Password;
             }
         }
 
-        private void btn_save_Click(object sender, RoutedEventArgs e)
+        private void _btn_Save_Click(object sender, RoutedEventArgs e)
         {
-            Credential.Name = Draft.Name;
-            Credential.Email = Draft.Email;
-            Credential.Username = Draft.Username;
-            Credential.Password = Draft.Password;
+            _credential.Name = Draft.Name;
+            _credential.Email = Draft.Email;
+            _credential.Username = Draft.Username;
+            _credential.Password = Draft.Password;
 
-            if (isNew)
+            if (_new)
             {
-                file.Credentials.Add(Credential);
+                _file.Data.Credentials.Add(_credential);
             }
-            file.Save();
+            _file.Save();
             DialogResult = true;
             Close();
         }

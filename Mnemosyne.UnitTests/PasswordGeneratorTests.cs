@@ -7,53 +7,52 @@ namespace Mnemosyne.UnitTests
     [TestClass]
     public class PasswordGeneratorTests
     {
-        public int Runs = 100;
-        public int Length = 20;
+        private const int RUNS = 100;
+        private const int PASSWORD_LENGTH = 20;
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void GeneratePassword_NoLength()
         {
-            Length = 0;
-            try
-            {
-                string[] passwords = GeneratePasswords(new PasswordGenerator());
-            }
-            catch (InvalidOperationException exception)
-            {
-                Length = 20;
-                throw exception;
-            }
+            PasswordGenerator generator = new PasswordGenerator();
+            generator.UseDigits = true;
+            GeneratePasswords(generator, 0);
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void GeneratePassword_NoCharactersAllowed()
         {
-            string[] passwords = GeneratePasswords(new PasswordGenerator());
+            GeneratePasswords(new PasswordGenerator());
         }
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
-        public void GeneratePassword_NoSpecialCharactersPassedButRequired()
+        public void GeneratePassword_SpecialCharactersRequiredButNoneGiven()
         {
-            PasswordGenerator generator = new PasswordGenerator(new char[1] {' '});
+            PasswordGenerator generator = new PasswordGenerator();
+            generator.SpecialCharacters = new char[0];
             generator.UseSpecialCharacters = true;
-            string[] passwords = GeneratePasswords(generator);
+            GeneratePasswords(generator);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void GeneratePassword_InvalidSpecialCharactersGiven()
+        {
+            PasswordGenerator generator = new PasswordGenerator();
+            generator.SpecialCharacters = new char[1] { ' ' };
+            generator.UseSpecialCharacters = true;
+            GeneratePasswords(generator);
         }
 
         [TestMethod]
         public void GeneratePassword_Length20()
         {
-            int prevLength = Length;
-            Length = 20;
-
             PasswordGenerator generator = new PasswordGenerator();
             generator.UseDigits = true;
 
-            Assert.IsTrue(RegexPasswords(GeneratePasswords(generator), @"^[0-9]{20}$"));
-
-            Length = prevLength;
+            Assert.IsTrue(RegexPasswords(GeneratePasswords(generator, 20), @"^[0-9]{20}$"));
         }
 
         [TestMethod]
@@ -67,10 +66,10 @@ namespace Mnemosyne.UnitTests
 
             string[] passwords = GeneratePasswords(generator);
 
-            string specialCharacters = new string(PasswordGenerator.AllowableSpecialCharacters);
-            specialCharacters = specialCharacters.Insert(specialCharacters.IndexOf(']'), "\\\\");
-            specialCharacters = specialCharacters.Insert(specialCharacters.IndexOf('/'), "\\");
-            Assert.IsTrue(RegexPasswords(passwords, @"^[A-Za-z0-9" + specialCharacters + "]+$"));
+            string regex = new string(PasswordGenerator.AllSpecialCharacters);
+            regex = regex.Insert(regex.IndexOf(']'), "\\\\");
+            regex = regex.Insert(regex.IndexOf('/'), "\\");
+            Assert.IsTrue(RegexPasswords(passwords, @"^[A-Za-z0-9" + regex + "]+$"));
         }
 
         [TestMethod]
@@ -109,12 +108,12 @@ namespace Mnemosyne.UnitTests
             Assert.IsTrue(RegexPasswords(GeneratePasswords(generator), @"^[!""#$%&'()*+,-.\/:;<=>?@[\\\]^_`{|}~]+$"));
         }
 
-        private string[] GeneratePasswords(PasswordGenerator generator)
+        private string[] GeneratePasswords(PasswordGenerator generator, int length = PASSWORD_LENGTH)
         {
-            string[] passwords = new string[Runs];
+            string[] passwords = new string[RUNS];
             for (int i = 0; i < passwords.Length; i++)
             {
-                passwords[i] = generator.GeneratePassword(Length);
+                passwords[i] = generator.GeneratePassword(length);
             }
 
             return passwords;

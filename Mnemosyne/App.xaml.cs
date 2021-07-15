@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Mnemosyne
 {
@@ -13,5 +7,21 @@ namespace Mnemosyne
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            UserSettings.Default.Upgrade();
+            UserSettings.Default.Save();
+
+            if (e.Args.Length == 1)
+            {
+                new CipherWindow(new CipherFile(e.Args[0])).ShowDialog();
+            }
+            else
+            {
+                new CipherWindow().ShowDialog();
+            }
+        }
     }
 }

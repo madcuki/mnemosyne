@@ -8,254 +8,245 @@ namespace Mnemosyne
     public class PasswordGenerator
     {
         public const int MIN_LENGTH = 4;
-        public const int DEFAULT_LENGTH = 24;
         public const int MAX_LENGTH = 64;
 
-        public static readonly char[] AllowableSpecialCharacters    = @"!""#$%&'()*+,-./:;<=>?@[\]^_`{|}~".ToCharArray();
+        public static readonly char[] AllSpecialCharacters = @"!""#$%&'()*+,-./:;<=>?@[\]^_`{|}~".ToCharArray();
 
-        public static readonly Dictionary<char, char> AllowableDigitVowelSubs       = new Dictionary<char, char>
+        public char[] SpecialCharacters
         {
-            { 'a', '4' },
-            { 'e', '3' },
-            { 'o', '0' },
-        };
-        public static readonly Dictionary<char, char> AllowableDigitConsonantSubs   = new Dictionary<char, char>
-        {
-            { 'b', '8' },
-            { 'l', '1' },
-            { 's', '5' },
-        };
-        public static readonly Dictionary<char, char> AllowableSpecialVowelSubs     = new Dictionary<char, char>
-        {
-            { 'a', '@' },
-            { 'i', '!' },
-        };
-        public static readonly Dictionary<char, char> AllowableSpecialConsonantSubs = new Dictionary<char, char>
-        {
-            { 'c', '<' },
-            { 'l', '|' },
-            { 's', '$' },
-            { 't', '+' },
-            { 'v', '^' },
-        };
+            private get
+            {
+                return _special_characters;
+            }
+            set
+            {
+                _special_characters = new char[value.Length];
+                value.CopyTo(_special_characters, 0);
 
-        public bool MakePronounceable = false;
+                _special_vowel_subs = FilterSpecialSubstitutes(_all_special_vowel_subs);
+                _special_consonantSubs = FilterSpecialSubstitutes(_all_special_consonant_subs);
 
-        public bool UseUppercase            = false;
-        public bool UseLowercase            = false;
-        public bool UseDigits               = false;
-        public bool UseSpecialCharacters    = false;
-
-        public char[] SpecialCharacters;
-
-        private enum characterType
-        {
-            Letter,
-            Digit,
-            Special
+                Dictionary<char, char> FilterSpecialSubstitutes(Dictionary<char, char> possibleSubstitutes)
+                {
+                    return possibleSubstitutes.Where(kvp => SpecialCharacters.Contains(kvp.Value)).ToDictionary(x => x.Key, x => x.Value);
+                }
+            }
         }
 
-        private char[] letters;
-        private char[] vowels;
-        private char[] consonants;
-        private char[] digits;
+        public bool MakePronounceable;
+        public bool UseUppercase;
+        public bool UseLowercase;
+        public bool UseDigits;
+        public bool UseSpecialCharacters;
 
-        private MnemRandom random;
+        private readonly Dictionary<char, char> _all_digit_vowel_subs;
+        private readonly Dictionary<char, char> _all_digit_consonant_subs;
+        private readonly Dictionary<char, char> _all_special_vowel_subs;
+        private readonly Dictionary<char, char> _all_special_consonant_subs;
 
-        private Dictionary<char, char> digitVowelSubs;
-        private Dictionary<char, char> digitConsonantSubs;
-        private Dictionary<char, char> specialVowelSubs;
-        private Dictionary<char, char> specialConsonantSubs;
+        private Dictionary<char, char> _special_vowel_subs;
+        private Dictionary<char, char> _special_consonantSubs;
+
+        private char[] _special_characters;
+
+        private readonly char[] _letters;
+        private readonly char[] _vowels;
+        private readonly char[] _consonants;
+        private readonly char[] _digits;
+
+        private MnemRandom _random;
+
+        private enum _CharType
+        {
+            Letter = 0,
+            Digit = 1,
+            Special = 2,
+        }
 
         public PasswordGenerator()
         {
-            Initialize(AllowableSpecialCharacters);
-        }
+            SpecialCharacters = new char[AllSpecialCharacters.Length];
+            AllSpecialCharacters.CopyTo(SpecialCharacters, 0);
 
-        public PasswordGenerator(char[] specialCharacters)
-        {
-            Initialize(specialCharacters);
+            MakePronounceable       = false;
+            UseUppercase            = false;
+            UseLowercase            = false;
+            UseDigits               = false;
+            UseSpecialCharacters    = false;
+
+            _all_digit_vowel_subs = new Dictionary<char, char>()
+            {
+                { 'a', '4' },
+                { 'e', '3' },
+                { 'i', '1' },
+                { 'o', '0' },
+            };
+
+            _all_digit_consonant_subs = new Dictionary<char, char>()
+            {
+                { 'b', '8' },
+                { 's', '5' },
+                { 'z', '2' },
+            };
+
+            _all_special_vowel_subs = new Dictionary<char, char>()
+            {
+                { 'a', '@' },
+                { 'i', '!' },
+            };
+
+            _all_special_consonant_subs = new Dictionary<char, char>()
+            {
+                { 'c', '<' },
+                { 'l', '|' },
+                { 's', '$' },
+                { 't', '+' },
+                { 'v', '^' },
+            };
+
+            _letters    = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+            _vowels     = "AEIOU".ToCharArray();
+            _consonants = "BCDFGHJKLMNPQRSTVWXYZ".ToCharArray();
+            _digits     = "0123456789".ToCharArray();
+
+            _random = new MnemRandom();
         }
 
         public string GeneratePassword(int length)
         {
-            if (length < MIN_LENGTH)
+            if (length < MIN_LENGTH || length > MAX_LENGTH)
             {
-                throw new InvalidOperationException(
-                    String.Format(
-                        new ExceptionMessage(
-                            "Generating password of Length: {0}",
-                            "Length ({0}) is less than MinLength ({1})",
-                            "Increase Length so that it's greater than or equal to MinLength ({1})"
-                        ).ToString(), length, MIN_LENGTH
-                    )
-                );
+                throw new ArgumentOutOfRangeException(nameof(length));
             }
             if (!UseUppercase && !UseLowercase && !UseDigits && !UseSpecialCharacters)
             {
-                throw new InvalidOperationException(
-                    String.Format(
-                        new ExceptionMessage(
-                            "Generating password",
-                            "Not Allowed to use any types of characters",
-                            "Allow some character type to be used"
-                        ).ToString()
-                    )
-                );
+                throw new InvalidOperationException("Cannot generate password without some type of character");
             }
-            char[] invalidSpecChars = SpecialCharacters.Except(AllowableSpecialCharacters).ToArray();
-            if (UseSpecialCharacters && invalidSpecChars.Length > 0)
+            if (UseSpecialCharacters)
             {
-                throw new InvalidOperationException(
-                    String.Format(
-                        new ExceptionMessage(
-                            "Generating password with special characters",
-                            "Invalid special characters where given: \"{1}\"",
-                            "Limit special characters to: \"{2}\""
-                        ).ToString(), GetType().Name, new string(invalidSpecChars), new string(AllowableSpecialCharacters)
-                    )
-                );
+                if (SpecialCharacters.Length == 0)
+                {
+                    throw new InvalidOperationException("Cannot generate password with special characters: none given");
+                }
+                char[] invalid_special_characters = SpecialCharacters.Except(AllSpecialCharacters).ToArray();
+                if (invalid_special_characters.Length > 0)
+                {
+                    throw new InvalidOperationException(string.Format("Invalid special characters given: \"{0}\"", new string(invalid_special_characters)));
+                }
             }
 
             StringBuilder password = new StringBuilder(length, length);
 
-            int ucases,
-                lcases,
-                digits,
-                sChars,
-                ucaseRange = (UseUppercase ? letters.Length : 0),
-                lcaseRange = (UseLowercase ? ucaseRange + letters.Length : ucaseRange),
-                digitRange = (UseDigits ? lcaseRange + (MakePronounceable ? digitVowelSubs.Count + digitConsonantSubs.Count : this.digits.Length) : lcaseRange),
-                sCharRange = (UseSpecialCharacters ? digitRange + (MakePronounceable ? specialVowelSubs.Count + specialConsonantSubs.Count : SpecialCharacters.Length) : digitRange),
-                totalRange = sCharRange;
+            int uppercase_counter,
+                lowercase_counter,
+                digit_counter,
+                special_character_counter,
+                uppercase_range = UseUppercase ? _letters.Length : 0,
+                lowercase_range = UseLowercase ? uppercase_range + _letters.Length : uppercase_range,
+                digit_range = UseDigits ? lowercase_range + (MakePronounceable ? _all_digit_vowel_subs.Count + _all_digit_consonant_subs.Count : this._digits.Length) : lowercase_range,
+                special_character_range = UseSpecialCharacters ? digit_range + (MakePronounceable ? _special_vowel_subs.Count + _special_consonantSubs.Count : SpecialCharacters.Length) : digit_range,
+                total_range = special_character_range;
 
-            bool vowelSwitch,
-                prevSwitch,
-                canRepeat,
-                isUppercase;
+            bool vowel_switcher,
+                previous_vowel_switcher,
+                can_repeat,
+                uppercase;
 
             int random;
 
-            void switchVowelSwitcher(int i, int length)
+            (int, int) IterateBuilderLoop(int loop_counter, int character_type_counter)
             {
                 if (MakePronounceable)
                 {
-                    canRepeat = i == length - 1 ? false : prevSwitch != vowelSwitch;
-                    prevSwitch = vowelSwitch;
-                    vowelSwitch = canRepeat ? GetRandomBool() : !vowelSwitch;
+                    can_repeat = loop_counter == 0 || loop_counter == length - 2 ? false : previous_vowel_switcher != vowel_switcher;
+                    previous_vowel_switcher = vowel_switcher;
+                    vowel_switcher = can_repeat ? GetRandomBool() : !vowel_switcher;
                 }
+
+                return (++loop_counter, ++character_type_counter);
             }
 
             do
             {
                 password.Clear();
 
-                ucases = 0;
-                lcases = 0;
-                digits = 0;
-                sChars = 0;
+                uppercase_counter = 0;
+                lowercase_counter = 0;
+                digit_counter = 0;
+                special_character_counter = 0;
 
-                prevSwitch = vowelSwitch = GetRandomBool();
+                previous_vowel_switcher = vowel_switcher = GetRandomBool();
 
                 for (int i = 0; i < length;)
                 {
-                    random = this.random.Next(0, totalRange);
+                    random = _random.Next(0, total_range);
 
-                    switch (random < lcaseRange ? characterType.Letter : random < digitRange ? characterType.Digit : characterType.Special)
+                    switch (random < lowercase_range ? _CharType.Letter : random < digit_range ? _CharType.Digit : _CharType.Special)
                     {
-                        case characterType.Letter:
-                            isUppercase = random < ucaseRange;
-                            if ((UseUppercase && isUppercase) || (UseLowercase && !isUppercase))
+                        case _CharType.Letter:
+                            uppercase = random < uppercase_range;
+                            if ((UseUppercase && uppercase) || (UseLowercase && !uppercase))
                             {
-                                char c = GetRandomCharacter(MakePronounceable ? (vowelSwitch ? vowels : consonants) : letters);
-                                password.Append(isUppercase ? Char.ToUpper(c) : Char.ToLower(c));
-                                ucases = isUppercase ? ++ucases : ucases;
-                                lcases = !isUppercase ? ++lcases : lcases;
-                                i++;
-                                switchVowelSwitcher(i, length);
+                                char c = GetRandomCharacter(MakePronounceable ? (vowel_switcher ? _vowels : _consonants) : _letters);
+                                password.Append(uppercase ? char.ToUpper(c) : char.ToLower(c));
+                                if (uppercase)
+                                {
+                                    (i, uppercase_counter) = IterateBuilderLoop(i, uppercase_counter);
+                                }
+                                else
+                                {
+                                    (i, lowercase_counter) = IterateBuilderLoop(i, lowercase_counter);
+                                }
                             }
                             break;
-                        case characterType.Digit:
+                        case _CharType.Digit:
                             if (UseDigits)
                             {
-                                password.Append(GetRandomCharacter(MakePronounceable ? (vowelSwitch ? digitVowelSubs.Values.ToArray() : digitConsonantSubs.Values.ToArray()) : this.digits));
-                                digits++;
-                                i++;
-                                switchVowelSwitcher(i, length);
+                                password.Append(GetRandomCharacter(MakePronounceable ? (vowel_switcher ? _all_digit_vowel_subs.Values.ToArray() : _all_digit_consonant_subs.Values.ToArray()) : _digits));
+                                (i, digit_counter) = IterateBuilderLoop(i, digit_counter);
                             }
                             break;
                         default:
                             if (UseSpecialCharacters)
                             {
-                                password.Append(GetRandomCharacter(MakePronounceable ? (vowelSwitch ? specialVowelSubs.Values.ToArray() : specialConsonantSubs.Values.ToArray()) : SpecialCharacters));
-                                sChars++;
-                                i++;
-                                switchVowelSwitcher(i, length);
+                                if (MakePronounceable)
+                                {
+                                    if (vowel_switcher && _special_vowel_subs.Count > 0)
+                                    {
+                                        password.Append(GetRandomCharacter(_special_vowel_subs.Values.ToArray()));
+                                    }
+                                    else if (!vowel_switcher && _special_consonantSubs.Count > 0)
+                                    {
+                                        password.Append(GetRandomCharacter(_special_consonantSubs.Values.ToArray()));
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+                                    password.Append(GetRandomCharacter(SpecialCharacters));
+                                }
+                                (i, special_character_counter) = IterateBuilderLoop(i, special_character_counter);
                             }
                             break;
                     }
                 }
 
-            } while (UseUppercase && ucases < 1 || UseLowercase && lcases < 1 || UseDigits && digits < 1 || UseSpecialCharacters && sChars < 1);
+            } while (UseUppercase && uppercase_counter < 1 || UseLowercase && lowercase_counter < 1 || UseDigits && digit_counter < 1 || UseSpecialCharacters && special_character_counter < 1);
 
             return password.ToString();
         }
 
-        public int[] GetRangeFromMinMax()
-        {
-            int[] range = new int[MAX_LENGTH - (MIN_LENGTH - 1)];
-
-            for (int i = 0; i < MAX_LENGTH; i++)
-            {
-                range[i] = i + MIN_LENGTH;
-            }
-
-            return range;
-        }
-
-        private void Initialize(char[] sChars)
-        {
-            random = new MnemRandom();
-
-            string vowels = "AEIOU",
-                consonants = "BCDFGHJKLMNPQRSTVWXYZ";
-
-            letters = (vowels + consonants).ToCharArray();
-            this.vowels = vowels.ToCharArray();
-            this.consonants = consonants.ToCharArray();
-            digits = "1234567890".ToCharArray();
-
-            if (sChars.Length < 0)
-            {
-                this.SpecialCharacters = new char[AllowableSpecialCharacters.Length];
-                AllowableSpecialCharacters.CopyTo(this.SpecialCharacters, 0);
-            }
-            else
-            {
-                this.SpecialCharacters = new char[sChars.Length];
-                sChars.CopyTo(this.SpecialCharacters, 0);
-            }
-            SpecialCharacters = sChars.Length == 0 ? AllowableSpecialCharacters : sChars;
-
-            digitVowelSubs = new Dictionary<char, char>(FilterSpecialSubstitutes(AllowableDigitVowelSubs, characterType.Digit));
-            digitConsonantSubs = new Dictionary<char, char>(FilterSpecialSubstitutes(AllowableDigitConsonantSubs, characterType.Digit));
-            specialVowelSubs = new Dictionary<char, char>(FilterSpecialSubstitutes(AllowableSpecialVowelSubs, characterType.Special));
-            specialConsonantSubs = new Dictionary<char, char>(FilterSpecialSubstitutes(AllowableSpecialConsonantSubs, characterType.Special));
-
-            Dictionary<char, char> FilterSpecialSubstitutes(Dictionary<char, char> substitutes, characterType type)
-            {
-                return substitutes.Where(kvp => (type == characterType.Special ? SpecialCharacters : digits).Contains(kvp.Value)).ToDictionary(x => x.Key, x => x.Value);
-            }
-        }
-
         private bool GetRandomBool()
         {
-            return random.Next(0, 1) == 1;
+            return _random.Next(0, 2) == 1;
         }
 
-        private char GetRandomCharacter(char[] chars)
+        private char GetRandomCharacter(char[] characters)
         {
-            return chars[random.Next(0, chars.Length)];
+            return characters[_random.Next(0, characters.Length)];
         }
     }
 }

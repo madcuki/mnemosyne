@@ -5,25 +5,20 @@ namespace Mnemosyne
     public sealed class Credential : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private string name;
-        private string email;
-        private string username;
-        private string password;
         
         public string Name
         {
             get
             {
-                return name;
+                return _name;
             }
             set
             {
-                if (name == value)
+                if (_name == value)
                 {
                     return;
                 }
-                name = value;
+                _name = value;
                 raisePropertyChanged("Name");
             }
         }
@@ -31,15 +26,15 @@ namespace Mnemosyne
         {
             get
             {
-                return email;
+                return _email;
             }
             set
             {
-                if (email == value)
+                if (_email == value)
                 {
                     return;
                 }
-                email = value;
+                _email = value;
                 raisePropertyChanged("Email");
             }
         }
@@ -47,15 +42,15 @@ namespace Mnemosyne
         {
             get
             {
-                return username;
+                return _username;
             }
             set
             {
-                if (username == value)
+                if (_username == value)
                 {
                     return;
                 }
-                username = value;
+                _username = value;
                 raisePropertyChanged("Username");
             }
         }
@@ -63,15 +58,15 @@ namespace Mnemosyne
         {
             get
             {
-                return password;
+                return _password;
             }
             set
             {
-                if (password == value)
+                if (_password == value)
                 {
                     return;
                 }
-                password = value;
+                _password = value;
                 raisePropertyChanged("Password");
             }
         }
@@ -84,5 +79,10 @@ namespace Mnemosyne
                 eh(this, new PropertyChangedEventArgs(propName));
             }
         }
+
+        private string _name;
+        private string _email;
+        private string _username;
+        private string _password;
     }
 }

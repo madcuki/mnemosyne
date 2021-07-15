@@ -9,45 +9,53 @@ namespace Mnemosyne
 {
     public partial class PasswordGeneratorWindow : Window, INotifyPropertyChanged
     {
+        public const int DEFAULT_LENGTH = 24;
+
         public string Password
         {
             get
             {
-                return password;
+                return _password;
             }
             set
             {
-                if (password == value)
+                if (_password == value)
                 {
                     return;
                 }
-                password = value;
-                raisePropertyChanged("Password");
+                _password = value;
+                _RaisePropertyChanged("Password");
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private PasswordGenerator generator;
+        private PasswordGenerator _generator;
 
-        private List<CheckBox> options;
-        private List<CheckBox> allChars;
-        private List<CheckBox> readableChars;
-        private List<CheckBox> nonreadableChars;
+        private List<CheckBox> _option_checkboxes;
+        private List<CheckBox> _all_special_character_checkboxes;
+        private List<CheckBox> _pronounceable_special_character_checkboxes;
+        private List<CheckBox> _unpronounceable_special_character_checkboxes;
 
-        private string password;
+        private bool _check_all_special_characters;
+        private bool _uncheck_defaults_checkbox;
+
+        private string _password;
 
         public PasswordGeneratorWindow(string password = null)
         {
             InitializeComponent();
-            initializeControls();
-            initializeSlider();
+            _InitializeControls();
+            _InitializeSlider();
 
             DataContext = this;
-            generator = new PasswordGenerator();
+            _generator = new PasswordGenerator();
             Password = password;
 
-            chk_defaults.IsChecked = true;
+            _check_all_special_characters = true;
+            _uncheck_defaults_checkbox = true;
+
+            _chk_Defaults.IsChecked = true;
 
             if (Password == null || Password == "")
             {
@@ -57,28 +65,27 @@ namespace Mnemosyne
 
         public void Randomize()
         {
-            StringBuilder specialCharacters = new StringBuilder();
+            StringBuilder special_characters = new StringBuilder();
 
-            foreach (CheckBox box in allChars)
+            foreach (CheckBox box in _all_special_character_checkboxes)
             {
                 if ((bool)box.IsChecked)
                 {
-                    specialCharacters.Append(box.Content);
+                    special_characters.Append(box.Content);
                 }
             }
 
-            generator.SpecialCharacters = specialCharacters.ToString().ToCharArray();
+            _generator.SpecialCharacters     = special_characters.ToString().ToCharArray();
+            _generator.MakePronounceable     = (bool)_chk_MakePronounceable.IsChecked;
+            _generator.UseUppercase          = (bool)_chk_UseUppercases.IsChecked;
+            _generator.UseLowercase          = (bool)_chk_UseLowercases.IsChecked;
+            _generator.UseDigits             = (bool)_chk_UseDigits.IsChecked;
+            _generator.UseSpecialCharacters  = (bool)_chk_UseSpecialCharacters.IsChecked;
 
-            generator.UseUppercase = (bool)chk_ucases.IsChecked;
-            generator.UseLowercase = (bool)chk_lcases.IsChecked;
-            generator.UseDigits = (bool)chk_digits.IsChecked;
-            generator.UseSpecialCharacters = (bool)chk_sChars.IsChecked;
-            generator.MakePronounceable = (bool)chk_pronounceable.IsChecked;
-
-            Password = generator.GeneratePassword((int)sld_length.Value);
+            Password = _generator.GeneratePassword((int)_sld_Length.Value);
         }
 
-        private void raisePropertyChanged(string propName)
+        private void _RaisePropertyChanged(string propName)
         {
             PropertyChangedEventHandler eh = PropertyChanged;
             if (eh != null)
@@ -87,190 +94,186 @@ namespace Mnemosyne
             }
         }
 
-        private void initializeControls()
+        private void _InitializeControls()
         {
-            options = new List<CheckBox>();
-            readableChars = new List<CheckBox>();
-            nonreadableChars = new List<CheckBox>();
+            _option_checkboxes = new List<CheckBox>();
+            _pronounceable_special_character_checkboxes = new List<CheckBox>();
+            _unpronounceable_special_character_checkboxes = new List<CheckBox>();
 
-            options.Add(chk_ucases);
-            options.Add(chk_lcases);
-            options.Add(chk_digits);
-            options.Add(chk_sChars);
-            options.Add(chk_pronounceable);
-            options.Add(chk_all);
+            _option_checkboxes.Add(_chk_UseUppercases);
+            _option_checkboxes.Add(_chk_UseLowercases);
+            _option_checkboxes.Add(_chk_UseDigits);
+            _option_checkboxes.Add(_chk_UseSpecialCharacters);
+            _option_checkboxes.Add(_chk_MakePronounceable);
 
-            foreach (CheckBox chk in options)
+            foreach (CheckBox checkbox in _option_checkboxes)
             {
-                chk.Unchecked += chk_options_Unchecked;
+                checkbox.Unchecked += DefaultCheckboxes_Unchecked;
             }
 
-            sld_length.ValueChanged += sld_length_ValueChanged;
+            _sld_Length.ValueChanged += _sld_Length_ValueChanged;
 
-            readableChars.Add(chk_addressSign);
-            readableChars.Add(chk_exclamation);
-            readableChars.Add(chk_lessThan);
-            readableChars.Add(chk_pipe);
-            readableChars.Add(chk_dollarSign);
-            readableChars.Add(chk_plusSign);
-            readableChars.Add(chk_caret);
+            _pronounceable_special_character_checkboxes.Add(_chk_AddressSign);
+            _pronounceable_special_character_checkboxes.Add(_chk_Exclamation);
+            _pronounceable_special_character_checkboxes.Add(_chk_LessThan);
+            _pronounceable_special_character_checkboxes.Add(_chk_Pipe);
+            _pronounceable_special_character_checkboxes.Add(_chk_DollarSign);
+            _pronounceable_special_character_checkboxes.Add(_chk_PlusSign);
+            _pronounceable_special_character_checkboxes.Add(_chk_Caret);
 
-            nonreadableChars.Add(chk_quotation);
-            nonreadableChars.Add(chk_hashtag);
-            nonreadableChars.Add(chk_percentageSign);
-            nonreadableChars.Add(chk_ampersand);
-            nonreadableChars.Add(chk_apostrophe);
-            nonreadableChars.Add(chk_openingParenthesis);
-            nonreadableChars.Add(chk_closingParenthesis);
-            nonreadableChars.Add(chk_asterisk);
-            nonreadableChars.Add(chk_comma);
-            nonreadableChars.Add(chk_dash);
-            nonreadableChars.Add(chk_period);
-            nonreadableChars.Add(chk_forwardSlash);
-            nonreadableChars.Add(chk_colon);
-            nonreadableChars.Add(chk_semicolon);
-            nonreadableChars.Add(chk_equalSign);
-            nonreadableChars.Add(chk_greaterThan);
-            nonreadableChars.Add(chk_questionMark);
-            nonreadableChars.Add(chk_openingBracket);
-            nonreadableChars.Add(chk_backSlash);
-            nonreadableChars.Add(chk_closingBracket);
-            nonreadableChars.Add(chk_underscore);
-            nonreadableChars.Add(chk_backtick);
-            nonreadableChars.Add(chk_openingCurlyBrace);
-            nonreadableChars.Add(chk_closingCurlyBrace);
-            nonreadableChars.Add(chk_tilde);
-
-            allChars = readableChars.Concat(nonreadableChars).ToList();
-
-            foreach (CheckBox chk in allChars)
+            foreach (CheckBox checkbox in _pronounceable_special_character_checkboxes)
             {
-                chk.Checked += chk_allCharsChecked;
-                chk.Unchecked += chk_allCharsUnchecked;
+                checkbox.Unchecked += DefaultCheckboxes_Unchecked;
             }
-        }
 
-        private void initializeSlider()
-        {
-            sld_length.Minimum = PasswordGenerator.MIN_LENGTH;
-            sld_length.Maximum = PasswordGenerator.MAX_LENGTH;
-        }
+            _unpronounceable_special_character_checkboxes.Add(_chk_Quotation);
+            _unpronounceable_special_character_checkboxes.Add(_chk_Hashtag);
+            _unpronounceable_special_character_checkboxes.Add(_chk_PercentageSign);
+            _unpronounceable_special_character_checkboxes.Add(_chk_Ampersand);
+            _unpronounceable_special_character_checkboxes.Add(_chk_Apostrophe);
+            _unpronounceable_special_character_checkboxes.Add(_chk_OpeningParenthesis);
+            _unpronounceable_special_character_checkboxes.Add(_chk_ClosingParenthesis);
+            _unpronounceable_special_character_checkboxes.Add(_chk_Asterisk);
+            _unpronounceable_special_character_checkboxes.Add(_chk_Comma);
+            _unpronounceable_special_character_checkboxes.Add(_chk_Dash);
+            _unpronounceable_special_character_checkboxes.Add(_chk_Period);
+            _unpronounceable_special_character_checkboxes.Add(_chk_ForwardSlash);
+            _unpronounceable_special_character_checkboxes.Add(_chk_Colon);
+            _unpronounceable_special_character_checkboxes.Add(_chk_Semicolon);
+            _unpronounceable_special_character_checkboxes.Add(_chk_EqualSign);
+            _unpronounceable_special_character_checkboxes.Add(_chk_GreaterThan);
+            _unpronounceable_special_character_checkboxes.Add(_chk_QuestionMark);
+            _unpronounceable_special_character_checkboxes.Add(_chk_OpeningBracket);
+            _unpronounceable_special_character_checkboxes.Add(_chk_BackSlash);
+            _unpronounceable_special_character_checkboxes.Add(_chk_ClosingBracket);
+            _unpronounceable_special_character_checkboxes.Add(_chk_Underscore);
+            _unpronounceable_special_character_checkboxes.Add(_chk_Backtick);
+            _unpronounceable_special_character_checkboxes.Add(_chk_OpeningCurlyBrace);
+            _unpronounceable_special_character_checkboxes.Add(_chk_ClosingCurlyBrace);
+            _unpronounceable_special_character_checkboxes.Add(_chk_Tilde);
 
-        private void checkCheckboxes(List<CheckBox> checkboxes, bool check)
-        {
-            foreach (CheckBox chk in checkboxes)
+            _all_special_character_checkboxes = _pronounceable_special_character_checkboxes.Concat(_unpronounceable_special_character_checkboxes).ToList();
+
+            foreach (CheckBox checkbox in _all_special_character_checkboxes)
             {
-                chk.IsChecked = check;
+                checkbox.Checked += _chk_AnySpecialCharacter_Checked;
+                checkbox.Unchecked += _chk_AnySpecialCharacter_Unchecked;
             }
         }
 
-        private void enableCheckboxes(List<CheckBox> checkboxes, bool enable)
+        private void _InitializeSlider()
         {
-            foreach (CheckBox chk in checkboxes)
+            _sld_Length.Minimum = PasswordGenerator.MIN_LENGTH;
+            _sld_Length.Maximum = PasswordGenerator.MAX_LENGTH;
+        }
+
+        private void _CheckCheckboxes(List<CheckBox> checkboxes, bool check)
+        {
+            foreach (CheckBox checkbox in checkboxes)
             {
-                chk.IsEnabled = enable;
+                checkbox.IsChecked = check;
             }
         }
 
-        private void uncheckDefaults()
+        private bool _AnyCheckboxesChecked(List<CheckBox> checkboxes)
         {
-            chk_defaults.IsChecked = false;
-        }
-
-        private bool anyBoxesChecked(List<CheckBox> checkboxes)
-        {
-            bool anyChecked = false;
-            foreach (CheckBox chk in checkboxes)
+            bool any_checked = false;
+            foreach (CheckBox checkbox in checkboxes)
             {
-                anyChecked = (bool)chk.IsChecked ? true : anyChecked;
+                any_checked = (bool)checkbox.IsChecked ? true : any_checked;
             }
-            return anyChecked;
+            return any_checked;
         }
 
-        private bool anyBoxesUnchecked(List<CheckBox> checkboxes)
+        private void _EnableCheckboxes(List<CheckBox> checkboxes, bool enable)
         {
-            bool anyUnchecked = false;
-            foreach (CheckBox chk in checkboxes)
+            foreach (CheckBox checkbox in checkboxes)
             {
-                anyUnchecked = (bool)chk.IsChecked ? anyUnchecked : true;
+                checkbox.IsEnabled = enable;
             }
-            return anyUnchecked;
         }
 
-        private void btn_copyClick(object sender, RoutedEventArgs e)
+        private void _UncheckDefaultsCheckbox()
         {
-            Clipboard.SetText(txt_password.Text);
+            _chk_Defaults.IsChecked = false;
         }
 
-        private void btn_rerollClick(object sender, RoutedEventArgs e)
+        private void _btn_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(_txt_Password.Text);
+        }
+
+        private void _btn_Randomize_Click(object sender, RoutedEventArgs e)
         {
             Randomize();
         }
 
-        private void btn_useClick(object sender, RoutedEventArgs e)
+        private void _btn_Use_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
             Close();
         }
 
-        private void chk_defaults_Checked(object sender, RoutedEventArgs e)
+        private void _chk_Defaults_Checked(object sender, RoutedEventArgs e)
         {
-            checkCheckboxes(options, true);
-            sld_length.Value = PasswordGenerator.DEFAULT_LENGTH;
+            _uncheck_defaults_checkbox = false;
+            _chk_UseSpecialCharacters.IsChecked = false;
+            _uncheck_defaults_checkbox = true;
+
+            _CheckCheckboxes(_option_checkboxes, true);
+            _sld_Length.Value = DEFAULT_LENGTH;
         }
 
-        private void chk_options_Unchecked(object sender, RoutedEventArgs e)
+        private void DefaultCheckboxes_Unchecked(object sender, RoutedEventArgs e)
         {
-            uncheckDefaults();
-        }
-
-        private void sld_length_ValueChanged(object sender, RoutedEventArgs e)
-        {
-            if (sld_length.Value != PasswordGenerator.DEFAULT_LENGTH)
+            if (_uncheck_defaults_checkbox)
             {
-                uncheckDefaults();
+                _UncheckDefaultsCheckbox();
             }
         }
 
-        private void chk_pronChecked(object sender, RoutedEventArgs e)
+        private void _sld_Length_ValueChanged(object sender, RoutedEventArgs e)
         {
-            checkCheckboxes(nonreadableChars, false);
-            enableCheckboxes(nonreadableChars, false);
-        }
-
-        private void chk_pronUnchecked(object sender, RoutedEventArgs e)
-        {
-            chk_all.IsChecked = false;
-            enableCheckboxes(nonreadableChars, true);
-        }
-
-        private void chk_allCharsChecked(object sender, RoutedEventArgs e)
-        {
-            chk_sChars.IsChecked = anyBoxesChecked(allChars) ? true : chk_sChars.IsChecked;
-        }
-
-        private void chk_allCharsUnchecked(object sender, RoutedEventArgs e)
-        {
-            chk_sChars.IsChecked = !anyBoxesChecked(allChars) ? false : chk_sChars.IsChecked;
-            if ((bool)chk_pronounceable.IsChecked)
+            if (_sld_Length.Value != DEFAULT_LENGTH)
             {
-                chk_all.IsChecked = anyBoxesUnchecked(readableChars) ? false : chk_all.IsChecked;
-            }
-            else
-            {
-                chk_all.IsChecked = anyBoxesUnchecked(allChars) ? false : chk_all.IsChecked;
+                _UncheckDefaultsCheckbox();
             }
         }
 
-        private void chk_allChecked(object sender, RoutedEventArgs e)
+        private void _chk_MakePronounceable_Checked(object sender, RoutedEventArgs e)
         {
-            checkCheckboxes(readableChars, true);
-            checkCheckboxes(nonreadableChars, !(bool)chk_pronounceable.IsChecked);
+            _CheckCheckboxes(_unpronounceable_special_character_checkboxes, false);
+            _EnableCheckboxes(_unpronounceable_special_character_checkboxes, false);
         }
 
-        private void chk_sCharsUnchecked(object sender, RoutedEventArgs e)
+        private void _chk_MakePronounceable_Unchecked(object sender, RoutedEventArgs e)
         {
-            checkCheckboxes(allChars, false);
+            _EnableCheckboxes(_unpronounceable_special_character_checkboxes, true);
+        }
+
+        private void _chk_AnySpecialCharacter_Checked(object sender, RoutedEventArgs e)
+        {
+            _check_all_special_characters = false;
+            _chk_UseSpecialCharacters.IsChecked = _AnyCheckboxesChecked(_all_special_character_checkboxes) ? true : _chk_UseSpecialCharacters.IsChecked;
+            _check_all_special_characters = true;
+        }
+
+        private void _chk_AnySpecialCharacter_Unchecked(object sender, RoutedEventArgs e)
+        {
+            _chk_UseSpecialCharacters.IsChecked = !_AnyCheckboxesChecked(_all_special_character_checkboxes) ? false : _chk_UseSpecialCharacters.IsChecked;
+        }
+
+        private void _chk_UseSpecialCharacters_Unchecked(object sender, RoutedEventArgs e)
+        {
+            _CheckCheckboxes(_all_special_character_checkboxes, false);
+        }
+
+        private void _chk_UseSpecialCharacters_Checked(object sender, RoutedEventArgs e)
+        {
+            if (_check_all_special_characters)
+            {
+                _CheckCheckboxes((bool)_chk_MakePronounceable.IsChecked ? _pronounceable_special_character_checkboxes : _all_special_character_checkboxes, true);
+            }
         }
     }
 }

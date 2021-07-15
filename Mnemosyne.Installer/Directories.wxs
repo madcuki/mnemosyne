@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+
+      <Directory Id="ProgramMenuFolder" />
+
+      <!--<Directory Id="DesktopFolder" Name="Desktop">
+        <Component Id="ApplicationShortcutDesktop" Guid="*">
+          <Shortcut Id="ApplicationDesktopShortcut"
+              Name="Text under your icon"
+              Description="Comment field in your shortcut"
+              Target="[MYAPPDIRPROPERTY]MyApp.exe"
+              WorkingDirectory="MYAPPDIRPROPERTY"/>
+          <RemoveFolder Id="DesktopFolder" On="uninstall"/>
+          <RegistryValue
+              Root="HKCU"
+              Key="Software\MyCompany\MyApplicationName"
+              Name="installed"
+              Type="integer"
+              Value="1"
+              KeyPath="yes"/>
+        </Component>
+      </Directory>-->
+      
+      <?if $(var.Platform)=x64?>
+        <Directory Id="ProgramFiles64Folder">
+          <Directory Id="INSTALLFOLDER" Name="!(loc.ProductFolderName)" />
+        </Directory>
+      <?else?>
+        <Directory Id="ProgramFilesFolder">
+          <Directory Id="INSTALLFOLDER" Name="!(loc.ProductFolderName)" />
+        </Directory>
+      <?endif?>
+      
+    </Directory>
+  </Fragment>
+</Wix>

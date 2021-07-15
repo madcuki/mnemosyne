@@ -9,103 +9,169 @@ namespace Mnemosyne
 {
     public class CipherFile
     {
-        public const string DEFAULT_FILENAME = "vault";
-        public const string FILE_EXTENSION   = ".mnem";
+        public const string FILE_EXTENSION = ".mnem";
 
-        public string FilePath;
-
-        public List<Credential> Credentials;
-
-        private FileStream writer;
-        private AesGcmEncryptor gcm = new AesGcmEncryptor();
-        private MnemRandom random = new MnemRandom();
-
-        private string key;
-        private byte[] nonce;
-
-        public CipherFile(string filepath, string key)
+        public CipherData   Data
         {
-            FilePath = filepath;
-            this.key = key;
+            get;
+            private set;
+        }
+        public string       Path
+        {
+            get
+            {
+                return _new_path;
+            }
+            set
+            {
+                _new_path = value;
 
-            if (Exists())
-            {
-                Read();
+                if (_new_path == "")
+                {
+                    _new_path = UserSettings.Default.DefaultPath;
+                }
+
+                _new_path = Environment.ExpandEnvironmentVariables(_new_path);
+
+                if (System.IO.Path.GetExtension(_new_path) == "")
+                {
+                    _new_path = System.IO.Path.GetDirectoryName(_new_path) + "\\";
+                }
+
+                _new_path += System.IO.Path.GetExtension(_new_path) == FILE_EXTENSION ? "" : FILE_EXTENSION;
+                _new_path = System.IO.Path.IsPathFullyQualified(_new_path) ? _new_path : System.IO.Path.GetFullPath(_new_path);
             }
-            else
+        }
+        public string       Key
+        {
+            private get;
+            set;
+        }
+        public bool         Active
+        {
+            get
             {
-                Create();
-                Credentials = new List<Credential>();
-                nonce = new byte[12];
-                Save();
-                Read();
+                return _active_path != "";
             }
+        }
+
+        private Cryptor     _cryptor;
+        private string      _active_path;
+        private string      _new_path;
+
+        public CipherFile()
+        {
+            _cryptor    = new Cryptor();
+            Data        = new CipherData();
+            
+            _active_path    = "";
+            Path            = "";
+            Key             = "";
+        }
+
+        public CipherFile(string path) : this()
+        {
+            Path = path;
+        }
+
+        public CipherFile(string path, string key) : this(path)
+        {
+            Key = key;
         }
 
         public bool Exists()
         {
-            return File.Exists(FilePath);
+            return File.Exists(Path);
         }
 
-        public void Create()
+        public CipherFile Activate()
         {
-            if (Path.GetExtension(FilePath) != FILE_EXTENSION)
+            if (Active)
             {
-                FilePath += FILE_EXTENSION;
+                File.Delete(_active_path);
             }
 
-            File.Create(FilePath).Close();
+            if (Exists())
+            {
+                _Read();
+            }
+            else
+            {
+                _Create();
+            }
+
+            return this;
         }
 
-        public void Read()
+        public CipherFile Save()
         {
-            byte[] data = Convert.FromBase64String(File.ReadAllText(FilePath, Encoding.UTF8));
+            if (!Active)
+            {
+                Activate();
+            }
 
-            Dictionary<string, byte[]> dictionary = JsonSerializer.Deserialize<Dictionary<string, byte[]>>(data);
-            Credentials = JsonSerializer.Deserialize<List<Credential>>(gcm.Decrypt(
-                dictionary["ciphertext"],
-                new Rfc2898DeriveBytes(key, dictionary["salt"]).GetBytes(32),
-                dictionary["nonce"],
-                dictionary["tag"],
-                dictionary["meta"]
-            ));
+            MnemRandom random = new MnemRandom();
 
-            nonce = dictionary["nonce"];
-        }
-
-        public void Save()
-        {
             byte[] ciphertext, tag,
-                bytes = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(Credentials)),
-                nonce = increment(this.nonce),
-                meta = random.GetNextBytes(random.Next(0, 32)),
-                salt = random.GetNextBytes(8);
+                salt = random.GetNextBytes(8),
+                nonce = random.GetNextBytes(12);
 
-            (ciphertext, tag) = gcm.Encrypt(bytes, new Rfc2898DeriveBytes(key, salt).GetBytes(32), nonce, meta);
+            (ciphertext, tag) = _cryptor.Encrypt(
+                Encoding.UTF8.GetBytes(JsonSerializer.Serialize(Data)),
+                new Rfc2898DeriveBytes(Key, salt).GetBytes(32),
+                nonce,
+                Encoding.UTF8.GetBytes(System.IO.Path.GetFileName(_active_path))
+            );
 
             Dictionary<string, byte[]> dictionary = new Dictionary<string, byte[]>()
             {
                 { "ciphertext", ciphertext },
                 { "tag", tag },
                 { "nonce", nonce },
-                { "meta", meta },
                 { "salt", salt }
             };
 
-            byte[] data = Encoding.UTF8.GetBytes(Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(dictionary))));
+            byte[] base64 = Encoding.UTF8.GetBytes(Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(dictionary))));
 
-            writer = File.OpenWrite(FilePath);
+            FileStream writer = File.OpenWrite(_active_path);
             writer.SetLength(0);
             writer.Flush();
-            writer.Write(data, 0, data.Length);
+            writer.Write(base64, 0, base64.Length);
             writer.Close();
+
+            _Read();
+
+            return this;
         }
 
-        private byte[] increment(byte[] counter)
+        private void _Create()
         {
-            int j = counter.Length;
-            while (--j >= 0 && ++counter[j] == 0) { }
-            return counter;
+            string directory = System.IO.Path.GetDirectoryName(Path);
+            if (directory != "")
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            File.Create(Path).Close();
+
+            _active_path = Path;
+
+            Save();
+        }
+
+        private void _Read()
+        {
+            Dictionary<string, byte[]> dictionary = JsonSerializer.Deserialize<Dictionary<string, byte[]>>(Convert.FromBase64String(File.ReadAllText(Path, Encoding.UTF8)));
+
+            Data = JsonSerializer.Deserialize<CipherData>(_cryptor.Decrypt(
+                dictionary["ciphertext"],
+                new Rfc2898DeriveBytes(Key, dictionary["salt"]).GetBytes(32),
+                dictionary["nonce"],
+                dictionary["tag"],
+                Encoding.UTF8.GetBytes(System.IO.Path.GetFileName(Path))
+            ));
+
+            _active_path = Path;
         }
     }
 }
