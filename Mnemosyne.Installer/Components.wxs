@@ -17,7 +17,7 @@
       <Component Id="FileAssociation" Guid="{11670AAE-3D5C-4390-800F-A04EA36F8115}">
         <RegistryValue Id="FileAssociationRegKey" Root="HKCU" Key="SOFTWARE\!(loc.ProductFolderName)" Name="FileAssociationKey" Value="1" Type="integer" KeyPath="yes" />
         <Extension Id="mnem" ContentType="application/mnem">
-          <Verb Id="open" Command="Open" TargetFile="fil655F38441A336FA44B814A63DF5A1C02" Argument="%1" />
+          <Verb Id="open" Command="Open" TargetFile="fil655F38441A336FA44B814A63DF5A1C02" Argument='"%1"' />
         </Extension>
       </Component>
 
