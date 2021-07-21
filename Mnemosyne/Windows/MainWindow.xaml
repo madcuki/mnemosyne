@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Mnemosyne"
         WindowStartupLocation="CenterScreen"
-        SizeToContent="WidthAndHeight"
+        SizeToContent="Width"
+        Height="350"
         MinWidth="{Binding ElementName=_win_Main,Path=_InitialWidth}"
         MinHeight="{Binding ElementName=_win_Main,Path=_InitialHeight}"
         Loaded="_win_Main_Loaded">
@@ -32,7 +33,7 @@
                 <Button Padding="5,1,5,1" Margin="0,0,0,0" x:Name="_btn_Rekey"  Content="Rekey"             Click="_btn_Rekey_Click"  />
             </StackPanel>
         </Grid>
-        <ListView MinHeight="300" x:Name="_lvw_Credentials" Margin="0,25,0,0" SelectionChanged="_lvw_Credentials_SelectionChanged">
+        <ListView x:Name="_lvw_Credentials" Margin="0,25,0,0" SelectionChanged="_lvw_Credentials_SelectionChanged" AllowDrop="True" PreviewMouseLeftButtonDown="_lvw_Credentials_PreviewMouseLeftButtonDown" MouseMove="_lvw_Credentials_MouseMove" DragEnter="_lvw_Credentials_DragEnter" Drop="_lvw_Credentials_Drop" DragOver="_lvw_Credentials_DragOver">
             <ListView.View>
                 <GridView>
                     <GridViewColumn>

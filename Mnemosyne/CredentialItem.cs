@@ -66,12 +66,12 @@ namespace Mnemosyne
             Credential = credential == null ? new Credential() : credential;
         }
 
-        private void RaisePropertyChanged(string propName)
+        private void RaisePropertyChanged(string property_name)
         {
             PropertyChangedEventHandler eh = PropertyChanged;
             if (eh != null)
             {
-                eh(this, new PropertyChangedEventArgs(propName));
+                eh(this, new PropertyChangedEventArgs(property_name));
             }
         }
     }

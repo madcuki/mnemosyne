@@ -139,7 +139,7 @@ namespace Mnemosyne
             writer.Write(base64, 0, base64.Length);
             writer.Close();
 
-            _Read();
+            //_Read();
 
             return this;
         }
