@@ -30,7 +30,6 @@ namespace Mnemosyne
             Draft = new Credential()
             { 
                 Name = _credential.Name,
-                Email = _credential.Email,
                 Username = _credential.Username,
                 Password = _credential.Password
             };
@@ -48,7 +47,6 @@ namespace Mnemosyne
         private void _btn_Save_Click(object sender, RoutedEventArgs e)
         {
             _credential.Name = Draft.Name;
-            _credential.Email = Draft.Email;
             _credential.Username = Draft.Username;
             _credential.Password = Draft.Password;
 

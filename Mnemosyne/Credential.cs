@@ -22,22 +22,6 @@ namespace Mnemosyne
                 raisePropertyChanged("Name");
             }
         }
-        public string Email
-        {
-            get
-            {
-                return _email;
-            }
-            set
-            {
-                if (_email == value)
-                {
-                    return;
-                }
-                _email = value;
-                raisePropertyChanged("Email");
-            }
-        }
         public string Username
         {
             get
@@ -81,7 +65,6 @@ namespace Mnemosyne
         }
 
         private string _name;
-        private string _email;
         private string _username;
         private string _password;
     }
