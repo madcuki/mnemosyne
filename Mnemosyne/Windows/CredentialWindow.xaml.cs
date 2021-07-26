@@ -33,6 +33,8 @@ namespace Mnemosyne
                 Username = _credential.Username,
                 Password = _credential.Password
             };
+
+            _txt_Name.Focus();
         }
 
         private void _btn_Generator_Click(object sender, RoutedEventArgs e)

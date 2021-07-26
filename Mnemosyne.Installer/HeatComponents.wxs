@@ -2,166 +2,166 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Fragment>
         <DirectoryRef Id="INSTALLFOLDER">
-            <Component Id="cmp3FD4B35AE3946278879CFA6D598CD32E" Guid="{675007F7-C74D-455F-A2EA-4B8CE354EE08}">
+            <Component Id="cmp3FD4B35AE3946278879CFA6D598CD32E" Guid="{02F5A8EA-D070-4630-A431-F5FFF4FD415D}">
                 <File Id="fil0E9E1D824F546D610B386084AC2C8F31" KeyPath="yes" Source="$(var.HeatSourceDirectory)\Mnemosyne.deps.json" />
             </Component>
-            <Component Id="cmp3B99F3B075962AD96E0C33C88B3249E9" Guid="{C905B0FA-6AF2-480C-A0CB-BF150F168983}">
+            <Component Id="cmp3B99F3B075962AD96E0C33C88B3249E9" Guid="{B6B70258-3B57-410A-A7AD-F26A57849985}">
                 <File Id="fil778E45E451C71E19100C136838694EB0" KeyPath="yes" Source="$(var.HeatSourceDirectory)\Mnemosyne.dll" />
             </Component>
-            <Component Id="cmp239F33DDDB38414636F0D7E543A8DF76" Guid="{2D8D386E-1CC7-429D-9BC2-BBA6FC3DE2A7}">
+            <Component Id="cmp239F33DDDB38414636F0D7E543A8DF76" Guid="{A8C95210-3488-4A98-80A6-6F4742A8ABFA}">
                 <File Id="fil84B8C12E7CC8B34626276E2E8CE3940E" KeyPath="yes" Source="$(var.HeatSourceDirectory)\Mnemosyne.dll.config" />
             </Component>
-            <Component Id="cmpC1DA7B262B9F734AC2169D43C10B0C85" Guid="{895EE030-CF80-41FB-BC90-9A1862A6C8DA}">
+            <Component Id="cmpC1DA7B262B9F734AC2169D43C10B0C85" Guid="{FDB72D98-C35C-434B-91C4-B447A1AADE65}">
                 <File Id="fil655F38441A336FA44B814A63DF5A1C02" KeyPath="yes" Source="$(var.HeatSourceDirectory)\Mnemosyne.exe" />
             </Component>
-            <Component Id="cmp8CD58AD177861C1C7C8B4819734E24A7" Guid="{0EE09E4A-6FF3-40D2-9A3F-F136E583B15D}">
+            <Component Id="cmp8CD58AD177861C1C7C8B4819734E24A7" Guid="{53503015-740A-4B8B-A121-1DABDFCD22C7}">
                 <File Id="fil5A8C0F58CD219BFB077A6F202DE58F39" KeyPath="yes" Source="$(var.HeatSourceDirectory)\Mnemosyne.pdb" />
             </Component>
-            <Component Id="cmpB53EA887F81209B509B3BDE37E5C17C8" Guid="{0D9E702A-FDCF-4C80-9B6B-2503AFB8E38A}">
+            <Component Id="cmpB53EA887F81209B509B3BDE37E5C17C8" Guid="{3E3D15EE-9593-4245-859A-E2FC65B7F7FF}">
                 <File Id="fil1E2A26920B316D682014EB835FD52EC3" KeyPath="yes" Source="$(var.HeatSourceDirectory)\Mnemosyne.runtimeconfig.dev.json" />
             </Component>
-            <Component Id="cmpB3F19F0127B0537EFB1B9A6981779098" Guid="{676F0039-9668-4D34-8E6F-D9F5BAD9DBFD}">
+            <Component Id="cmpB3F19F0127B0537EFB1B9A6981779098" Guid="{98FF0E4A-4247-4F20-8D0C-FA84224F9B08}">
                 <File Id="fil1EE19A0AD05AA3FF2746AD9D51FE2688" KeyPath="yes" Source="$(var.HeatSourceDirectory)\Mnemosyne.runtimeconfig.json" />
             </Component>
-            <Component Id="cmp704B16B386E9703C1412E6AFBDE594C6" Guid="{0346644A-8EB5-4F7F-8F43-1BF36614F190}">
+            <Component Id="cmp704B16B386E9703C1412E6AFBDE594C6" Guid="{DB1AA012-2512-4D09-B074-7A9412129C25}">
                 <File Id="filEED5A5DFA9D4B404BB75226F55378079" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.ComponentModel.Composition.dll" />
             </Component>
-            <Component Id="cmpCB3207CB8152A24C1B0C4FAA6C42381E" Guid="{05BE423D-9319-4DC3-849E-9DEC9696DE7A}">
+            <Component Id="cmpCB3207CB8152A24C1B0C4FAA6C42381E" Guid="{D4D28116-32A5-4473-89F5-852CAEAF6349}">
                 <File Id="fil8B8DAA4524DD98C93C8A44C222B65032" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.ComponentModel.Composition.Registration.dll" />
             </Component>
-            <Component Id="cmp285EB902192036F35723B53E81178402" Guid="{6A9943C1-F084-46D0-A72B-6853D5E1BE02}">
+            <Component Id="cmp285EB902192036F35723B53E81178402" Guid="{1E2C9092-620C-4F54-BFD0-B87D6B684569}">
                 <File Id="filA4C2A691CD4485CFDD326269313A8E28" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.Data.Odbc.dll" />
             </Component>
-            <Component Id="cmp94E20494377646A4D9567D7D153DC7F8" Guid="{8A9A4DF5-7BD5-4586-B49D-D5643EB48E4C}">
+            <Component Id="cmp94E20494377646A4D9567D7D153DC7F8" Guid="{4CD4F9E7-E66C-40D1-9FB4-5EC24AE1BCBA}">
                 <File Id="fil0F6452769AB6165B903F49BE66D5CDED" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.Data.OleDb.dll" />
             </Component>
-            <Component Id="cmp7FFA1CFB45EDA1442E42E34E1F3DB27E" Guid="{F8033FA6-6DAD-4EDC-AD7E-3041EAEF0DAD}">
+            <Component Id="cmp7FFA1CFB45EDA1442E42E34E1F3DB27E" Guid="{34D2A20D-1048-402C-8E76-9C2E89B589A7}">
                 <File Id="filEF4B8F9C45AD18CA9F559E7A542D0C98" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.Data.SqlClient.dll" />
             </Component>
-            <Component Id="cmp28DA583D03D243568B9E8D67E28DC03E" Guid="{0C9E0B54-7C1E-4388-9484-A32DDCE91E40}">
+            <Component Id="cmp28DA583D03D243568B9E8D67E28DC03E" Guid="{E323A432-FF64-4BC5-B7BE-4BEFC87A54F7}">
                 <File Id="fil7F8EC318E9E8F0F09CC7C081378B6293" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.Diagnostics.EventLog.dll" />
             </Component>
-            <Component Id="cmp28698F3E40E97D0D04ED87AE917B13C7" Guid="{46C29E7E-DE2D-4A60-912F-A973FE525B40}">
+            <Component Id="cmp28698F3E40E97D0D04ED87AE917B13C7" Guid="{3978A4A4-81E7-4515-8A94-204E9E511578}">
                 <File Id="fil07DA91370126729501EE3756F11EC693" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.Diagnostics.PerformanceCounter.dll" />
             </Component>
-            <Component Id="cmp393D17DF285570A405EEC657FF77C3B4" Guid="{FA2E8CE4-E2E5-4C0F-8594-0385EE32140F}">
+            <Component Id="cmp393D17DF285570A405EEC657FF77C3B4" Guid="{EDD7F2E3-410C-4021-9281-10186EA5C249}">
                 <File Id="filDBD5127B654D9C88A94771DC5CCBC33E" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.DirectoryServices.AccountManagement.dll" />
             </Component>
-            <Component Id="cmp248A5E0AE153624D5F53B2EA60C293FE" Guid="{840D40FE-7C35-4622-B8E8-02FFE7A65827}">
+            <Component Id="cmp248A5E0AE153624D5F53B2EA60C293FE" Guid="{9B9BBDF7-F000-43B1-9206-5C390481B426}">
                 <File Id="fil34F44A46E7C41FF75B888D32A7A48422" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.DirectoryServices.Protocols.dll" />
             </Component>
-            <Component Id="cmpAA71AC0ED023C2C24B4F61CC98B27F64" Guid="{0FFC6241-A68D-484A-9646-4C91F5731EE3}">
+            <Component Id="cmpAA71AC0ED023C2C24B4F61CC98B27F64" Guid="{A46CC4ED-C89A-46C2-8B83-4998955ABAAC}">
                 <File Id="fil49D56705AF9A04B1D7C05BA68795D333" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.IO.Ports.dll" />
             </Component>
-            <Component Id="cmpB2F9EBAF385E9E29B5A93F58B0D73177" Guid="{E2F0A173-07AC-4EDF-A543-D91BA4C675DD}">
+            <Component Id="cmpB2F9EBAF385E9E29B5A93F58B0D73177" Guid="{89643CF7-9883-4BF3-83C7-5CE01BC6D1DC}">
                 <File Id="filA39AFD83E426A11FDBCFCA1B11CFEE01" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.Management.dll" />
             </Component>
-            <Component Id="cmp63C479140D6F537A76E0B638D87E2951" Guid="{745A9835-3EC2-43B4-A59C-0826F0213D17}">
+            <Component Id="cmp63C479140D6F537A76E0B638D87E2951" Guid="{41F5E089-340D-4A29-8F5C-8C9245CD2F2E}">
                 <File Id="filDD8716D1D4DF6945930C352517ED36AB" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.Private.ServiceModel.dll" />
             </Component>
-            <Component Id="cmp4111B70664EF5581AD36096A4B36A7E6" Guid="{154B60A6-BFCE-4992-92D2-AFF2C0E93405}">
+            <Component Id="cmp4111B70664EF5581AD36096A4B36A7E6" Guid="{4B00D252-B72F-4FDA-AA18-86890F167201}">
                 <File Id="fil9AFD93DBF39D6FFE171FABA8DF8C0E8D" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.Reflection.Context.dll" />
             </Component>
-            <Component Id="cmp3704D619BA8176CC239C4E2E3DE22240" Guid="{EE4A366B-70C4-45CC-BEDE-D20D56AAED12}">
+            <Component Id="cmp3704D619BA8176CC239C4E2E3DE22240" Guid="{58790DEB-6DF3-4DFD-9650-C906121B1D05}">
                 <File Id="fil33F3D184398B14A49BD98032A8871B75" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.Runtime.Caching.dll" />
             </Component>
-            <Component Id="cmp39CE60B301084AE368282EBF261464F0" Guid="{AA9D186D-A532-4200-ABC6-6BC00DD2A32E}">
+            <Component Id="cmp39CE60B301084AE368282EBF261464F0" Guid="{F43AA1B1-6C41-433B-99BF-461E130D7292}">
                 <File Id="fil4665CC7D527931E3A52770E88AF61542" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.Security.Cryptography.Pkcs.dll" />
             </Component>
-            <Component Id="cmpC8B4E2670FF4E41E22F95F7602D47941" Guid="{F64471E2-972A-480B-8B83-A0E9D40B6757}">
+            <Component Id="cmpC8B4E2670FF4E41E22F95F7602D47941" Guid="{20F94B47-1014-49DF-BC19-B3D14E01FC80}">
                 <File Id="filD24E7EB030C37BD02FFD79DEBC566F07" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.ServiceModel.dll" />
             </Component>
-            <Component Id="cmp51AA3CB97BB5B405B92BE7CE51FE7C0B" Guid="{117BC9AC-0AF8-41F1-9468-ECC094909B89}">
+            <Component Id="cmp51AA3CB97BB5B405B92BE7CE51FE7C0B" Guid="{6541F1C6-BE99-4091-8DBA-E10A02048426}">
                 <File Id="fil0AF2E10A67C130F9048A1E447DAD6412" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.ServiceModel.Duplex.dll" />
             </Component>
-            <Component Id="cmp3758397F1270BF5124FBA146AB2161CD" Guid="{8BB28392-AA3F-4D4B-8B09-387E7B456DA8}">
+            <Component Id="cmp3758397F1270BF5124FBA146AB2161CD" Guid="{D9CA4EC9-93FC-4AF0-A48D-7A61916D8291}">
                 <File Id="filF0310C7B21D09F08E8BEE2BB130AF97D" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.ServiceModel.Http.dll" />
             </Component>
-            <Component Id="cmpE13F8923BB47DFDF5AB91563AC78D9CE" Guid="{DAB854E3-2452-4C41-A525-D5EA2AD930D4}">
+            <Component Id="cmpE13F8923BB47DFDF5AB91563AC78D9CE" Guid="{CDC34C07-F84F-4393-A40B-EFA2213E88EB}">
                 <File Id="filA4B12DF91C127E080EFEF3E2E2ECF1D6" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.ServiceModel.NetTcp.dll" />
             </Component>
-            <Component Id="cmpF9FE3EF269B462CCFCD03056FED69C64" Guid="{A2D9B33B-C121-4B1C-8A24-74504BA63C11}">
+            <Component Id="cmpF9FE3EF269B462CCFCD03056FED69C64" Guid="{D71A6E6A-8EA2-453C-BA9B-CD60AFB962E7}">
                 <File Id="fil4FCB7A69DE1E01B29199EA8BD9B5E458" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.ServiceModel.Primitives.dll" />
             </Component>
-            <Component Id="cmp112D508FECE5F4C9F2B5C7AC4CA6D773" Guid="{2A358F58-8181-4105-AA46-204A0F60D85D}">
+            <Component Id="cmp112D508FECE5F4C9F2B5C7AC4CA6D773" Guid="{BE15AD12-04F9-419F-BA7A-A759D80BF5AB}">
                 <File Id="filD63E8C2208F8D05C2F145141C54ECA66" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.ServiceModel.Security.dll" />
             </Component>
-            <Component Id="cmpE860E8D2FA636B89DE467619318BC289" Guid="{1BFF83F5-8FC3-4C3F-A5F2-0CE3B5ADC460}">
+            <Component Id="cmpE860E8D2FA636B89DE467619318BC289" Guid="{F23BB9FA-096A-4A6B-B833-A297871FC67A}">
                 <File Id="filA318982EA57A53F7009A93969927308B" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.ServiceModel.Syndication.dll" />
             </Component>
-            <Component Id="cmp3C5190B580EDFB87D0BC5E835BB950DE" Guid="{20653BBD-564D-4BE5-9C13-78DE93ED583E}">
+            <Component Id="cmp3C5190B580EDFB87D0BC5E835BB950DE" Guid="{C591CAFF-14F3-4A41-8D44-2810AAA1BEAB}">
                 <File Id="fil0B6369FF78F990F18A525D5F0CC6D1AB" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.ServiceProcess.ServiceController.dll" />
             </Component>
-            <Component Id="cmp00D7C080B69FD5A5E7F96F9ABFC8E76F" Guid="{EDA549FF-B387-4A57-A030-51BC4EF2CF3E}">
+            <Component Id="cmp00D7C080B69FD5A5E7F96F9ABFC8E76F" Guid="{2F5F68BF-7B82-417A-97BB-9D895AD0CA60}">
                 <File Id="filDBD7B603EE731395159C8F5E0A12B457" KeyPath="yes" Source="$(var.HeatSourceDirectory)\System.Speech.dll" />
             </Component>
-            <Component Id="cmpB5AC76F2952CC9DFFEAE55F2225097DA" Guid="{6244A5C0-E027-4205-A681-DD204811EEAF}">
+            <Component Id="cmpB5AC76F2952CC9DFFEAE55F2225097DA" Guid="{EA4C9DCD-E3CD-413B-BBA7-4D19BEABCE03}">
                 <File Id="fil6AA069CB067F41A6BD8EE397FDA8959D" KeyPath="yes" Source="$(var.HeatSourceDirectory)\Xceed.Wpf.AvalonDock.dll" />
             </Component>
-            <Component Id="cmp2A23BAA07F6AEF1BAC39F167324A8F3A" Guid="{022322B4-DCD6-4D3A-9D25-2A9B0064039F}">
+            <Component Id="cmp2A23BAA07F6AEF1BAC39F167324A8F3A" Guid="{F54B34C8-A407-4FCE-B986-559F23D0F532}">
                 <File Id="filBC3F4C1166E0142D06933250742EA7C2" KeyPath="yes" Source="$(var.HeatSourceDirectory)\Xceed.Wpf.AvalonDock.Themes.Aero.dll" />
             </Component>
-            <Component Id="cmpD2BBFD2B0371F68A1185CC644A1BEA64" Guid="{88EB2BD1-74F7-4949-BD78-B982F31768DA}">
+            <Component Id="cmpD2BBFD2B0371F68A1185CC644A1BEA64" Guid="{1B43751D-4B7B-49F9-8500-5F5CE4FA2C7A}">
                 <File Id="fil4DFF05E2DF20649A72E2FB5FBC3CBA2E" KeyPath="yes" Source="$(var.HeatSourceDirectory)\Xceed.Wpf.AvalonDock.Themes.Metro.dll" />
             </Component>
-            <Component Id="cmpFFB651FFCBD1B293A7B0FE113C056F8F" Guid="{C6980925-8A7E-4B52-A8E1-5C6D16CFF3FB}">
+            <Component Id="cmpFFB651FFCBD1B293A7B0FE113C056F8F" Guid="{0A00E4B3-7FD8-4735-8DE5-3C7E924D758C}">
                 <File Id="filEFDE58C5ABCFCB31E073211560F487D2" KeyPath="yes" Source="$(var.HeatSourceDirectory)\Xceed.Wpf.AvalonDock.Themes.VS2010.dll" />
             </Component>
-            <Component Id="cmpC85BD7478E073743A39F17DF06865203" Guid="{4989FA83-6E33-4AEB-9F45-F846D262FEE4}">
+            <Component Id="cmpC85BD7478E073743A39F17DF06865203" Guid="{70A38BFA-78F5-484C-89A6-33607D8368D4}">
                 <File Id="fil3DAD59899DDA1B0FCEDF95F84CB3C475" KeyPath="yes" Source="$(var.HeatSourceDirectory)\Xceed.Wpf.Toolkit.dll" />
             </Component>
             <Directory Id="dir685A0806E2E8E14FA0BEED541D816845" Name="cs-CZ">
-                <Component Id="cmpE3F8869BEF0F274473285F8661074660" Guid="{24199222-765F-4A54-A528-C847C09CF374}">
+                <Component Id="cmpE3F8869BEF0F274473285F8661074660" Guid="{658E7B7A-4F10-4F8A-95AE-D26C99A6CC15}">
                     <File Id="fil57FFEA7051D1BE22E52C873E503384B6" KeyPath="yes" Source="$(var.HeatSourceDirectory)\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll" />
                 </Component>
             </Directory>
             <Directory Id="dir242DC17B8DFC53C13CAF172FC08B730A" Name="de">
-                <Component Id="cmp5C894AE3FF956FCDDF4DFFE3BA89B9C1" Guid="{11ABB691-F5E5-4220-8DAB-90C87D279D20}">
+                <Component Id="cmp5C894AE3FF956FCDDF4DFFE3BA89B9C1" Guid="{FF6674FD-5103-461D-8158-98E4654447AC}">
                     <File Id="filB1C9AEB28739722A7265C14C29D55B54" KeyPath="yes" Source="$(var.HeatSourceDirectory)\de\Xceed.Wpf.AvalonDock.resources.dll" />
                 </Component>
             </Directory>
             <Directory Id="dir9AE38F4F5CB5E565E774521E138F44FD" Name="es">
-                <Component Id="cmp6EFE3E0288B5FA57D98FB920AB342897" Guid="{FE72B897-4F32-4207-B3BF-F6DCF35658D9}">
+                <Component Id="cmp6EFE3E0288B5FA57D98FB920AB342897" Guid="{E31C844A-5253-40A9-82F7-6A8834455179}">
                     <File Id="fil87AEDF35E30560161D787B0A3BF3750B" KeyPath="yes" Source="$(var.HeatSourceDirectory)\es\Xceed.Wpf.AvalonDock.resources.dll" />
                 </Component>
             </Directory>
             <Directory Id="dirB55DFDA91FEE7CCCBC65CA7493B75748" Name="fr">
-                <Component Id="cmp3EB7F17B0DCBDF3729FDAAAF0CF6B665" Guid="{359EDB4A-9D0B-447C-9923-C31AB9B3C3D1}">
+                <Component Id="cmp3EB7F17B0DCBDF3729FDAAAF0CF6B665" Guid="{91E59EFB-B1BC-4DD6-A094-37311733915B}">
                     <File Id="fil894A87B41983376BAAE165DD02D4FB6C" KeyPath="yes" Source="$(var.HeatSourceDirectory)\fr\Xceed.Wpf.AvalonDock.resources.dll" />
                 </Component>
             </Directory>
             <Directory Id="dir937629FDAC3D30087170D6DA46E383A6" Name="hu">
-                <Component Id="cmpFB118A47202A6B98ED49B3C952C22F35" Guid="{AD1CB787-CA7F-463D-AA71-D3573E8FBF43}">
+                <Component Id="cmpFB118A47202A6B98ED49B3C952C22F35" Guid="{690C8721-0F98-4486-A9FC-CA499CFEFDAA}">
                     <File Id="fil0686FF7DCF04C68D53BD45FE0C2A8BF6" KeyPath="yes" Source="$(var.HeatSourceDirectory)\hu\Xceed.Wpf.AvalonDock.resources.dll" />
                 </Component>
             </Directory>
             <Directory Id="dir45DE18DD71F3E8DD6BE4A0E2B48778C8" Name="it">
-                <Component Id="cmp0B9527E49327DF46736C8F6F58634C01" Guid="{B2F3AD27-5AE6-44EB-9C02-5975BA6A45AC}">
+                <Component Id="cmp0B9527E49327DF46736C8F6F58634C01" Guid="{1073F489-A492-4321-88FF-1906678799DB}">
                     <File Id="fil0B4AABB0E6DE194FF7BBE1F51933E675" KeyPath="yes" Source="$(var.HeatSourceDirectory)\it\Xceed.Wpf.AvalonDock.resources.dll" />
                 </Component>
             </Directory>
             <Directory Id="dir491F4D4E37AD7E1BE6B3D0E7F3A72AD8" Name="ja-JP">
-                <Component Id="cmp7746FE0DEDBE5684F977FE2DB4787E3E" Guid="{C5955DCF-2B6C-47C3-BE4A-33FB349FD799}">
+                <Component Id="cmp7746FE0DEDBE5684F977FE2DB4787E3E" Guid="{8CFF2679-3DB5-47C3-AE1C-A3C2AF29266B}">
                     <File Id="fil191AFECD354E11F36FD7B9C3550A8C3C" KeyPath="yes" Source="$(var.HeatSourceDirectory)\ja-JP\Xceed.Wpf.AvalonDock.resources.dll" />
                 </Component>
             </Directory>
             <Directory Id="dir339F53F3A11C56B053FD1FEC9B438810" Name="pt-BR">
-                <Component Id="cmp78E3AC4B6177179C5F50ECB1A8B16D85" Guid="{689780DA-E40E-4446-A944-2EE5D894C0F3}">
+                <Component Id="cmp78E3AC4B6177179C5F50ECB1A8B16D85" Guid="{1D8FCC91-411E-442A-A61B-C5B019E115D1}">
                     <File Id="fil449CD491C0135989D68E91371269A3B8" KeyPath="yes" Source="$(var.HeatSourceDirectory)\pt-BR\Xceed.Wpf.AvalonDock.resources.dll" />
                 </Component>
             </Directory>
             <Directory Id="dirE7B4A6F2DD043E7C7ECBDE7B89C02FF1" Name="ref">
-                <Component Id="cmp6EC38D4ECD96422C1041385D255CF3A3" Guid="{A4877677-C82C-4FE7-A942-BEEB614D9131}">
+                <Component Id="cmp6EC38D4ECD96422C1041385D255CF3A3" Guid="{A2E93F10-BA56-4B1F-B0FF-0DD80DEEAA06}">
                     <File Id="filBDD29552A8ABDF7740276107149CF419" KeyPath="yes" Source="$(var.HeatSourceDirectory)\ref\Mnemosyne.dll" />
                 </Component>
             </Directory>
             <Directory Id="dirBD3668345143F8EFDFB86A9B73810966" Name="ro">
-                <Component Id="cmp1540E6C17030090C628A142AB815893D" Guid="{4BB974F0-B7AB-416E-AC0A-9161B1DD9677}">
+                <Component Id="cmp1540E6C17030090C628A142AB815893D" Guid="{9580BB29-7FD8-4F09-A33A-4B993F067561}">
                     <File Id="filA53F285204ABC84BDD30D704D3AD1488" KeyPath="yes" Source="$(var.HeatSourceDirectory)\ro\Xceed.Wpf.AvalonDock.resources.dll" />
                 </Component>
             </Directory>
             <Directory Id="dirE9205C68F964857267FD3312DBFF9A91" Name="ru">
-                <Component Id="cmp0D4BE05FC1DE55590C9709CA01911525" Guid="{18FBEB79-A786-44D9-B71E-8DE029AD2131}">
+                <Component Id="cmp0D4BE05FC1DE55590C9709CA01911525" Guid="{CB90CC7D-20E7-41DC-A849-4A7A23E47CF9}">
                     <File Id="fil4C2ED72F2BA64BA2A890779CC3B77DA4" KeyPath="yes" Source="$(var.HeatSourceDirectory)\ru\Xceed.Wpf.AvalonDock.resources.dll" />
                 </Component>
             </Directory>
@@ -169,7 +169,7 @@
                 <Directory Id="dir05AA2C1281F899D21E554DFEF9B6E399" Name="freebsd">
                     <Directory Id="dirBBF4FFE0DFF6A7509C88673E3AE76EEC" Name="lib">
                         <Directory Id="dir95132A5CA6EBDE989CE356990773F2B0" Name="netcoreapp2.0">
-                            <Component Id="cmp123A1F2F20CB6DC7A1E01FBA341511CB" Guid="{B77C1D98-009B-47A8-980F-18964B1C19EA}">
+                            <Component Id="cmp123A1F2F20CB6DC7A1E01FBA341511CB" Guid="{857029B8-8CB7-4439-871B-A0B5982FF28C}">
                                 <File Id="fil51E34E34F853FF202F7375D0A74E6A6E" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\freebsd\lib\netcoreapp2.0\System.Data.Odbc.dll" />
                             </Component>
                         </Directory>
@@ -178,15 +178,15 @@
                 <Directory Id="dirCE399588CF2C45BB07F861A308CAE456" Name="linux">
                     <Directory Id="dir7374CAE61E9DB76B82A0ACBBC9E29E90" Name="lib">
                         <Directory Id="dir106708337F3217359E4BCDDF7CAD6D99" Name="netcoreapp2.0">
-                            <Component Id="cmpA9FCA7253788F4B20E957E9F7677D1D9" Guid="{2DF77C32-1EC7-4C45-9691-EB40EB929974}">
+                            <Component Id="cmpA9FCA7253788F4B20E957E9F7677D1D9" Guid="{B2E93439-071F-4A71-ACA2-0079E03BD444}">
                                 <File Id="fil2D09496C8B08DBDD70757E9DD5EBEE89" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\linux\lib\netcoreapp2.0\System.Data.Odbc.dll" />
                             </Component>
-                            <Component Id="cmpA4F12C98D38EF683DE97CCB648F3CD4F" Guid="{C537A2C8-92A1-435B-B026-EB6642362C1D}">
+                            <Component Id="cmpA4F12C98D38EF683DE97CCB648F3CD4F" Guid="{873DEDAD-0152-4B08-8E6B-CA93033C1920}">
                                 <File Id="filFB95BDC81781AEDC5CD07C32EC96AFAF" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\linux\lib\netcoreapp2.0\System.DirectoryServices.Protocols.dll" />
                             </Component>
                         </Directory>
                         <Directory Id="dirB096C64D5B182E01EB0903DEDE08C64A" Name="netstandard2.0">
-                            <Component Id="cmp840972157EF59C32ED96D84DD155BFD8" Guid="{B093C317-D942-4CE2-89B6-BC748228BCD8}">
+                            <Component Id="cmp840972157EF59C32ED96D84DD155BFD8" Guid="{22B39A87-1A07-4FEA-AF6A-24FEF9E5B246}">
                                 <File Id="fil26CF5E001E067C43C40C2B0990E99857" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\linux\lib\netstandard2.0\System.IO.Ports.dll" />
                             </Component>
                         </Directory>
@@ -194,21 +194,21 @@
                 </Directory>
                 <Directory Id="dir6F75383DB633D8F130457F52F58EA410" Name="linux-arm">
                     <Directory Id="dirDE2B6474A7AE43169B31CD69645DD47A" Name="native">
-                        <Component Id="cmp280CA51366DBDBE494390D741E510539" Guid="{1FDDC28F-5DEE-4C57-9EF5-E27F9753A832}">
+                        <Component Id="cmp280CA51366DBDBE494390D741E510539" Guid="{8D480B44-5844-4D24-B64F-92682733DDE4}">
                             <File Id="filCFA65FEC1E61E5C1410FB189E4DDC6D9" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so" />
                         </Component>
                     </Directory>
                 </Directory>
                 <Directory Id="dir4368456DE80A31A0FABEF422CF868A74" Name="linux-arm64">
                     <Directory Id="dirD4D406B0649E8BA45C0D436FC1C3D7B7" Name="native">
-                        <Component Id="cmpA5DCC1EC6CC35B2066C91F037055DBD7" Guid="{74402D8B-F525-443A-84BB-98B7C0BE4765}">
+                        <Component Id="cmpA5DCC1EC6CC35B2066C91F037055DBD7" Guid="{1E964579-B52F-44A3-8305-6AB18F47A49B}">
                             <File Id="fil88D61011EB77E6D2BDACF5100A785CC6" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so" />
                         </Component>
                     </Directory>
                 </Directory>
                 <Directory Id="dir986BEF73997BE02DCDBC34E856C19B36" Name="linux-x64">
                     <Directory Id="dirE1E651EB5B4F1522E5E10B81FEA70677" Name="native">
-                        <Component Id="cmpF5FD3E25EB57522BE42D92E3C953CD4F" Guid="{E6B9FEBD-691B-4415-9FC7-1F151060E729}">
+                        <Component Id="cmpF5FD3E25EB57522BE42D92E3C953CD4F" Guid="{87B52879-2901-434D-819D-D04E7A45B07B}">
                             <File Id="fil4BBD21896089B94874D22332306120EF" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so" />
                         </Component>
                     </Directory>
@@ -216,15 +216,15 @@
                 <Directory Id="dir3DA9BA8D811ABA6F3AFA391339C320BE" Name="osx">
                     <Directory Id="dir110FA5569245E7C688740B82832BE4A1" Name="lib">
                         <Directory Id="dir177AB451D09B59EDD139077B4B785B4D" Name="netcoreapp2.0">
-                            <Component Id="cmp392C8E5C98F06FB6F13638753856D321" Guid="{33CAE9F6-2D79-4159-AFAF-04E11B3E0387}">
+                            <Component Id="cmp392C8E5C98F06FB6F13638753856D321" Guid="{01DAD792-EF77-43E0-B902-F2752468A5E2}">
                                 <File Id="fil72E40DE4593EE3EF40C2C37EB13C8A68" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\osx\lib\netcoreapp2.0\System.Data.Odbc.dll" />
                             </Component>
-                            <Component Id="cmpBE58010EB25AE9B9F2ACCFEEBF6DA338" Guid="{A6F6604A-F161-40EB-9511-87131A107104}">
+                            <Component Id="cmpBE58010EB25AE9B9F2ACCFEEBF6DA338" Guid="{D06FA66F-A351-4143-ACA2-1DBB546B5C39}">
                                 <File Id="fil9977B85638C117826725CC5CD91CFE2C" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\osx\lib\netcoreapp2.0\System.DirectoryServices.Protocols.dll" />
                             </Component>
                         </Directory>
                         <Directory Id="dir7E7F4B9457EFD8EA4A8D0159340BB4E4" Name="netstandard2.0">
-                            <Component Id="cmp4E53FB4A39C8428F929A3244FBD75487" Guid="{A8913D99-E510-4C18-A52C-D68D8DAE792A}">
+                            <Component Id="cmp4E53FB4A39C8428F929A3244FBD75487" Guid="{A18E577D-9D56-4CA5-80B7-FD1FCD105CDE}">
                                 <File Id="filF8EC79B5923F0732F986E3DDF398853D" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\osx\lib\netstandard2.0\System.IO.Ports.dll" />
                             </Component>
                         </Directory>
@@ -232,7 +232,7 @@
                 </Directory>
                 <Directory Id="dir42B901FB10752B2744AE05D46EAF35EC" Name="osx-x64">
                     <Directory Id="dir71D0D403061D4DE071C64AEB774E16CF" Name="native">
-                        <Component Id="cmpD36B1EEEC5491AF65B4412E9F5CE3425" Guid="{CB00AD68-2FAD-429A-AEF3-653D269ACFAE}">
+                        <Component Id="cmpD36B1EEEC5491AF65B4412E9F5CE3425" Guid="{E8672CBF-DE71-4A6B-9A21-581D988B6E12}">
                             <File Id="filDB5D30749D6E61F70BBF67F36DCB0BC1" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib" />
                         </Component>
                     </Directory>
@@ -240,7 +240,7 @@
                 <Directory Id="dirDD6F90495A1A6169171F36CE85E975B6" Name="unix">
                     <Directory Id="dirF5C312D00ABBDC163194A7BEF01BFACF" Name="lib">
                         <Directory Id="dir6FAA93F403AFB5CB578180C70AA97B20" Name="netcoreapp2.1">
-                            <Component Id="cmp52265459CE0E3735C070A841DE38FB3D" Guid="{43089D42-A658-4029-B8BF-A7BC9D6F0FD5}">
+                            <Component Id="cmp52265459CE0E3735C070A841DE38FB3D" Guid="{70FAD075-9D79-4462-AE59-3E0CA396F2E5}">
                                 <File Id="fil574701FF4B1EAF3F8619654B87031E82" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll" />
                             </Component>
                         </Directory>
@@ -249,52 +249,52 @@
                 <Directory Id="dir9BE9104649A116CC7BCCF4D9CCD3331B" Name="win">
                     <Directory Id="dirD19B0610952D1EE2D417EB5361695989" Name="lib">
                         <Directory Id="dirE6C91B9343029DAC8410CDFBF32A7D8C" Name="netcoreapp2.0">
-                            <Component Id="cmp496A60658B1FB0FFA52A180EB6A27B40" Guid="{607732F1-760D-4064-A439-6E5350D8DE0F}">
+                            <Component Id="cmp496A60658B1FB0FFA52A180EB6A27B40" Guid="{34F44516-4163-428A-8384-5B6AA8A1F959}">
                                 <File Id="filE2573B64D6F7F7D40FE9E7722CA51E54" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netcoreapp2.0\System.Data.Odbc.dll" />
                             </Component>
-                            <Component Id="cmpB53B73650009282E7E0A3E4A2915D0E4" Guid="{FBB02FA4-CCE5-4E95-A830-14D16729D5C0}">
+                            <Component Id="cmpB53B73650009282E7E0A3E4A2915D0E4" Guid="{F4307AA6-B25F-41ED-B929-D757CC75A917}">
                                 <File Id="fil145D46131743547FE924605CB77342BE" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.EventLog.dll" />
                             </Component>
-                            <Component Id="cmp43222D796A17875FF9C5FB509611251C" Guid="{C3F61D96-AEB1-4961-B63F-7FD1365AA916}">
+                            <Component Id="cmp43222D796A17875FF9C5FB509611251C" Guid="{3D9D5B67-FDC6-4DE9-980A-5CD0B09861A4}">
                                 <File Id="fil3B282702A63F1BD1DF951A892EB593D0" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.EventLog.Messages.dll" />
                             </Component>
-                            <Component Id="cmp056CE8404951F32D71AED926FB635ECA" Guid="{C997C13B-C5DA-4D8C-ADB8-225F691F73B3}">
+                            <Component Id="cmp056CE8404951F32D71AED926FB635ECA" Guid="{EEAFCBEF-67C3-4CAE-ADF0-9734D8EE4316}">
                                 <File Id="fil0C82A311ACD95BCAB61D25EFA3305A43" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll" />
                             </Component>
-                            <Component Id="cmpDEE557076F7BEDAF637D023F063AE446" Guid="{9518A486-8FBB-419E-973F-F80A6F2C7C98}">
+                            <Component Id="cmpDEE557076F7BEDAF637D023F063AE446" Guid="{CE04DE89-660B-4820-A931-E2D61F849BC5}">
                                 <File Id="filE7E0FF58D15086EC8B45D652614C2D97" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netcoreapp2.0\System.DirectoryServices.AccountManagement.dll" />
                             </Component>
-                            <Component Id="cmp08B5752BA2FA2495923B898CBA6D508A" Guid="{6B9017DF-B23C-46B6-B92E-F0A0B504DAEB}">
+                            <Component Id="cmp08B5752BA2FA2495923B898CBA6D508A" Guid="{A713EF04-D616-4C2E-AD61-1C52B7A39C50}">
                                 <File Id="filDA736433558337366773583211710C2A" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netcoreapp2.0\System.DirectoryServices.Protocols.dll" />
                             </Component>
-                            <Component Id="cmpCD2DFF54292DDAB4B8187528A383DB5A" Guid="{8D6B1661-21F6-4FA0-8FBF-86B1FE6EF50F}">
+                            <Component Id="cmpCD2DFF54292DDAB4B8187528A383DB5A" Guid="{206276A9-D818-43CD-BE24-589F010B03CA}">
                                 <File Id="filC699983038D16B49E3E9CED528310DB8" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netcoreapp2.0\System.Management.dll" />
                             </Component>
                         </Directory>
                         <Directory Id="dirC7A12D033E10A7A61C2BB3B7672AF3F7" Name="netcoreapp2.1">
-                            <Component Id="cmp0C8EB2A341EF26254BB3DDAF4477B7B4" Guid="{25F7FC37-C0B2-4379-B50D-7F5BA5F28E88}">
+                            <Component Id="cmp0C8EB2A341EF26254BB3DDAF4477B7B4" Guid="{61F2B2CA-9844-4823-A83F-0914ECF87C27}">
                                 <File Id="filB5E554704B74F71F567EBF3E7327F0E1" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll" />
                             </Component>
-                            <Component Id="cmp77C6E82711CB79FF99A9AEF3ACEC7009" Guid="{B2C9A3E8-DD7B-444D-B09D-EBDF843F7173}">
+                            <Component Id="cmp77C6E82711CB79FF99A9AEF3ACEC7009" Guid="{03DB8E90-CAF8-4F58-91B3-9B708953A0EC}">
                                 <File Id="fil5EF99D35E23A0E7C3C7748E250F5F6E9" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netcoreapp2.1\System.Speech.dll" />
                             </Component>
                         </Directory>
                         <Directory Id="dir9CFC3E32F9CD3F5D85C1CE5068697BC1" Name="netcoreapp3.0">
-                            <Component Id="cmp6FEF0EEF1C7FE3B422F48222C126E8BF" Guid="{61C811F3-C14C-4251-BF95-6E8F04A7BDBD}">
+                            <Component Id="cmp6FEF0EEF1C7FE3B422F48222C126E8BF" Guid="{3770D217-4D81-47C2-91BE-79A9CBB47F15}">
                                 <File Id="filCDDB7F32B29B93DA023A00B762AD8EB0" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll" />
                             </Component>
                         </Directory>
                         <Directory Id="dir9B4F20F396822EEA06946FAEF0EA799A" Name="netstandard2.0">
-                            <Component Id="cmp790F0DA56BB92D8619C7A474CAD283F6" Guid="{28571BB5-074C-462B-8C35-B441D5957177}">
+                            <Component Id="cmp790F0DA56BB92D8619C7A474CAD283F6" Guid="{694B1F97-1C7D-4D56-BF25-3636244D3587}">
                                 <File Id="fil10409DB07DEEB1F6E4D5231C5B827E73" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netstandard2.0\System.Data.OleDb.dll" />
                             </Component>
-                            <Component Id="cmpD133EFB7EC1A74E4FFA72AAA85039171" Guid="{1B20D224-75BE-41DE-9FC6-002680F02980}">
+                            <Component Id="cmpD133EFB7EC1A74E4FFA72AAA85039171" Guid="{05711154-A84F-46AA-A182-0FB86B49D99D}">
                                 <File Id="filD989B605EEF0C829A5CD7335B784A511" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netstandard2.0\System.IO.Ports.dll" />
                             </Component>
-                            <Component Id="cmp833A2340C125EA00284BCCA156D277D2" Guid="{4D69EFD2-443C-416F-A436-BB72C6DE1A01}">
+                            <Component Id="cmp833A2340C125EA00284BCCA156D277D2" Guid="{398B1FFE-E656-431F-830E-510AEECB3BD4}">
                                 <File Id="filDA94F5EDB58690458A623E1BB959C604" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll" />
                             </Component>
-                            <Component Id="cmp40FBCECCD67CE1E0530D4D98172F59EF" Guid="{2512F07E-BB31-4C13-9049-3BD899838878}">
+                            <Component Id="cmp40FBCECCD67CE1E0530D4D98172F59EF" Guid="{2F1AE507-76BF-4F6F-993B-D1778FFD7B3B}">
                                 <File Id="filAF9D76B389C79302EDBD0A5A1F333EDF" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win\lib\netstandard2.0\System.ServiceProcess.ServiceController.dll" />
                             </Component>
                         </Directory>
@@ -302,33 +302,33 @@
                 </Directory>
                 <Directory Id="dirFF6AADC4B618984E1542CDA5FCBD7BB1" Name="win-arm64">
                     <Directory Id="dir65EC979D52EB501E3A656AA03EE4F2F5" Name="native">
-                        <Component Id="cmp3002D02E8CBA7FB0714D10077A135748" Guid="{43884388-D63A-4FE7-BF0B-98AB3749865B}">
+                        <Component Id="cmp3002D02E8CBA7FB0714D10077A135748" Guid="{E23D157E-3806-4997-996F-A85499D7911F}">
                             <File Id="fil9C23EE39EC9930FF59D47EAD3A8DCA11" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win-arm64\native\sni.dll" />
                         </Component>
                     </Directory>
                 </Directory>
                 <Directory Id="dirB9C75524282911E40C3C964A8836A714" Name="win-x64">
                     <Directory Id="dir1F9DF9DD2FB29AE2942604FAC206D5C4" Name="native">
-                        <Component Id="cmp2132F8D4914AC627374DF6B641DED868" Guid="{17CD5AB5-5A01-4683-8FC5-C2D08555C672}">
+                        <Component Id="cmp2132F8D4914AC627374DF6B641DED868" Guid="{D03F0535-FA34-4494-AA1E-675DA834CB0E}">
                             <File Id="filF502A2486EBDDB05E379A61C52926963" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win-x64\native\sni.dll" />
                         </Component>
                     </Directory>
                 </Directory>
                 <Directory Id="dir92F336DAA82E5A629052407A3F87EF27" Name="win-x86">
                     <Directory Id="dir2B43AAE918D399CEF13EC6CBA2D3D5EA" Name="native">
-                        <Component Id="cmpA69E1C886BEA900FBD4C325C11705F70" Guid="{D9045362-CE09-4296-AC26-6C79AE6A8FA6}">
+                        <Component Id="cmpA69E1C886BEA900FBD4C325C11705F70" Guid="{88843807-8ECE-4004-97AB-4320D7D0C2E1}">
                             <File Id="fil0714DC5AB4297BE12792CA5DAD04698C" KeyPath="yes" Source="$(var.HeatSourceDirectory)\runtimes\win-x86\native\sni.dll" />
                         </Component>
                     </Directory>
                 </Directory>
             </Directory>
             <Directory Id="dir8FBB04D7AB5FE55FCF40758128EC763E" Name="sv">
-                <Component Id="cmpC21D9CCB5856693FB3CE2A23AFB7DD83" Guid="{4510BB22-EEB1-4280-AB09-777DD357CB4F}">
+                <Component Id="cmpC21D9CCB5856693FB3CE2A23AFB7DD83" Guid="{BB140D3A-DCB3-40DC-9AB4-7FD50EB0AA5A}">
                     <File Id="fil75EA045A69F3E238DA47EBBABBF5DCD8" KeyPath="yes" Source="$(var.HeatSourceDirectory)\sv\Xceed.Wpf.AvalonDock.resources.dll" />
                 </Component>
             </Directory>
             <Directory Id="dir4A8DD77DBC79775EC39CACBC8AA06107" Name="zh-Hans">
-                <Component Id="cmp11A3FE50B66CC04F854A4486A5199C89" Guid="{9F281257-E123-43E3-8E01-29A690D65A52}">
+                <Component Id="cmp11A3FE50B66CC04F854A4486A5199C89" Guid="{EDFB4B2E-3AFC-4167-99B1-728ED0638212}">
                     <File Id="fil6EE1E4B1FB2A7DF0A95E3D283E73ADFA" KeyPath="yes" Source="$(var.HeatSourceDirectory)\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll" />
                 </Component>
             </Directory>
