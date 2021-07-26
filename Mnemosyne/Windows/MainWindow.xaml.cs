@@ -115,10 +115,9 @@ namespace Mnemosyne
 
         private void _OpenCredentialWindow(Credential credential = null)
         {
-            if ((bool)new CredentialWindow(_file, credential).ShowDialog())
-            {
-                _ReloadListView();
-            }
+            new CredentialWindow(_file, credential).ShowDialog();
+
+            _ReloadListView();
         }
 
         private void _win_Main_Loaded(object sender, RoutedEventArgs e)
@@ -190,6 +189,16 @@ namespace Mnemosyne
         private void _lvw_Credentials_Items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             _chk_All.IsChecked = false;
+        }
+
+        private void _lvw_Credentials_ContextMenu_CopyUsername_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(((CredentialItem)_lvw_Credentials.SelectedItem).Credential.Username);
+        }
+
+        private void _lvw_Credentials_ContextMenu_CopyPassword_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(((CredentialItem)_lvw_Credentials.SelectedItem).Credential.Password);
         }
 
         private void _lvi_DoubleClick(object sender, MouseButtonEventArgs e)

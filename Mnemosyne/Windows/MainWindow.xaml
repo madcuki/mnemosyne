@@ -8,7 +8,7 @@
         Title="Mnemosyne"
         WindowStartupLocation="CenterScreen"
         SizeToContent="Width"
-        Height="350"
+        Height="500"
         MinWidth="{Binding ElementName=_win_Main,Path=_InitialWidth}"
         MinHeight="{Binding ElementName=_win_Main,Path=_InitialHeight}"
         Loaded="_win_Main_Loaded">
@@ -47,10 +47,16 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding Credential.Name}" />
-                    <GridViewColumn Header="Username" Width="200" DisplayMemberBinding="{Binding Credential.Username}" />
+                    <GridViewColumn Header="Username" Width="250" DisplayMemberBinding="{Binding Credential.Username}" />
                     <GridViewColumn Header="Password" Width="200" DisplayMemberBinding="{Binding Password}" />
                 </GridView>
             </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Copy Username" Click="_lvw_Credentials_ContextMenu_CopyUsername_Click" />
+                    <MenuItem Header="Copy Password" Click="_lvw_Credentials_ContextMenu_CopyPassword_Click" />
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
     </Grid>
 </Window>
