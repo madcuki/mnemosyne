@@ -55,13 +55,11 @@ namespace Mnemosyne
             }
         }
 
-        private Cryptor     _cryptor;
         private string      _active_path;
         private string      _new_path;
 
         public CipherFile()
         {
-            _cryptor    = new Cryptor();
             Data        = new CipherData();
             
             _active_path    = "";
@@ -116,7 +114,7 @@ namespace Mnemosyne
                 salt = random.GetNextBytes(8),
                 nonce = random.GetNextBytes(12);
 
-            (ciphertext, tag) = _cryptor.Encrypt(
+            (ciphertext, tag) = Cryptor.Encrypt(
                 Encoding.UTF8.GetBytes(JsonSerializer.Serialize(Data)),
                 new Rfc2898DeriveBytes(Key, salt).GetBytes(32),
                 nonce,
@@ -161,7 +159,7 @@ namespace Mnemosyne
         {
             Dictionary<string, byte[]> dictionary = JsonSerializer.Deserialize<Dictionary<string, byte[]>>(Convert.FromBase64String(File.ReadAllText(Path, Encoding.UTF8)));
 
-            Data = JsonSerializer.Deserialize<CipherData>(_cryptor.Decrypt(
+            Data = JsonSerializer.Deserialize<CipherData>(Cryptor.Decrypt(
                 dictionary["ciphertext"],
                 new Rfc2898DeriveBytes(Key, dictionary["salt"]).GetBytes(32),
                 dictionary["nonce"],

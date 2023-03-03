@@ -2,9 +2,9 @@
 
 namespace Mnemosyne
 {
-    class Cryptor
+    public static class Cryptor
     {
-        public (byte[], byte[]) Encrypt(byte[] plaintext, byte[] key, byte[] nonce, byte[] data)
+        public static (byte[], byte[]) Encrypt(byte[] plaintext, byte[] key, byte[] nonce, byte[] data)
         {
             byte[] tag = new byte[16];
             byte[] ciphertext = new byte[plaintext.Length];
@@ -17,7 +17,7 @@ namespace Mnemosyne
             return (ciphertext, tag);
         }
 
-        public byte[] Decrypt(byte[] ciphertext, byte[] key, byte[] nonce, byte[] tag, byte[] data)
+        public static byte[] Decrypt(byte[] ciphertext, byte[] key, byte[] nonce, byte[] tag, byte[] data)
         {
             byte[] plaintext = new byte[ciphertext.Length];
 
