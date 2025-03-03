@@ -8,4 +8,4 @@ Finding a library that implemented AES-GCM-SIV proved difficult, as it is a less
 Tech Stack: C#, JSON, Bouncy Castle
 
 Future Considerations:
-Originally built for Windows, I no longer use the operating system. If I were to rebuild this project today, I would opt for a cross-platform language like Python to improve accessibility across different environments.
+This project was originally built for Windows, which I no longer use. If I were to rebuild this project today, I would opt for a cross-platform language like Python to improve accessibility across different environments.
