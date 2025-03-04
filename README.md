@@ -2,7 +2,6 @@ I built this project to create a secure, localized system for storing and retrie
 
 The system features AES-GCM-SIV encryption to protect stored credentials, chosen for its resistance to common cryptographic attacks. Additionally, it includes a highly customizable password generator, allowing users to tailor password complexity to their needs.
 
-Key Challenge:
 Finding a library that implemented AES-GCM-SIV proved difficult, as it is a less commonly supported encryption standard. I ultimately integrated the Bouncy Castle library to implement this encryption effectively.
 
 Key Technologies: C#, JSON, Bouncy Castle
